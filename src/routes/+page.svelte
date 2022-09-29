@@ -110,7 +110,9 @@
         gap: 220px;
         display: flex;
         flex-direction: column;
+        align-items: center;
 }
+
     section {
         display: grid;
         align-self: stretch;
@@ -200,7 +202,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 30px;
     }
 
     .hi-text, .hi-text-yifan {
