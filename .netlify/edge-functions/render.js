@@ -134,7 +134,7 @@ function create_ssr_component(fn) {
       return {
         html,
         css: {
-          code: Array.from(result.css).map((css2) => css2.code).join("\n"),
+          code: Array.from(result.css).map((css3) => css3.code).join("\n"),
           map: null
         },
         head: result.title + result.head
@@ -502,8 +502,8 @@ var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     index = 0;
     component = async () => (await Promise.resolve().then(() => (init_layout_svelte(), layout_svelte_exports))).default;
-    file = "_app/immutable/components/pages/_layout.svelte-2d0c75dd.js";
-    imports = ["_app/immutable/components/pages/_layout.svelte-2d0c75dd.js", "_app/immutable/chunks/index-4f5b2732.js"];
+    file = "_app/immutable/components/pages/_layout.svelte-12318abe.js";
+    imports = ["_app/immutable/components/pages/_layout.svelte-12318abe.js", "_app/immutable/chunks/index-4f5b2732.js"];
     stylesheets = ["_app/immutable/assets/_layout-9788bede.css"];
   }
 });
@@ -589,8 +589,8 @@ var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     index2 = 1;
     component2 = async () => (await Promise.resolve().then(() => (init_error_svelte(), error_svelte_exports))).default;
-    file2 = "_app/immutable/components/error.svelte-c4a1a519.js";
-    imports2 = ["_app/immutable/components/error.svelte-c4a1a519.js", "_app/immutable/chunks/index-4f5b2732.js", "_app/immutable/chunks/singletons-b617f7e7.js"];
+    file2 = "_app/immutable/components/error.svelte-eba207c6.js";
+    imports2 = ["_app/immutable/components/error.svelte-eba207c6.js", "_app/immutable/chunks/index-4f5b2732.js", "_app/immutable/chunks/singletons-b5bf710b.js"];
     stylesheets2 = [];
   }
 });
@@ -600,13 +600,18 @@ var page_svelte_exports = {};
 __export(page_svelte_exports, {
   default: () => Page
 });
-var Page;
+var css2, Page;
 var init_page_svelte = __esm({
   ".svelte-kit/output/server/entries/pages/_page.svelte.js"() {
     init_chunks();
+    css2 = {
+      code: ".page.svelte-rmq54t{display:flex;align-items:center;justify-content:center;height:100vh}p.svelte-rmq54t{font-size:3em;font-weight:700;text-transform:uppercase}",
+      map: null
+    };
     Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="${"https://kit.svelte.dev"}">kit.svelte.dev</a> to read the documentation</p>`;
+      $$result.css.add(css2);
+      return `<div class="${"page svelte-rmq54t"}"><p class="${"svelte-rmq54t"}">under construction</p>
+</div>`;
     });
   }
 });
@@ -625,9 +630,9 @@ var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     index3 = 2;
     component3 = async () => (await Promise.resolve().then(() => (init_page_svelte(), page_svelte_exports))).default;
-    file3 = "_app/immutable/components/pages/_page.svelte-e7caa856.js";
-    imports3 = ["_app/immutable/components/pages/_page.svelte-e7caa856.js", "_app/immutable/chunks/index-4f5b2732.js"];
-    stylesheets3 = [];
+    file3 = "_app/immutable/components/pages/_page.svelte-fe36d760.js";
+    imports3 = ["_app/immutable/components/pages/_page.svelte-fe36d760.js", "_app/immutable/chunks/index-4f5b2732.js"];
+    stylesheets3 = ["_app/immutable/assets/_page-9deb3529.css"];
   }
 });
 
@@ -3003,7 +3008,7 @@ function set_paths(paths) {
   base = paths.base;
   assets = paths.assets || base;
 }
-var app_template = ({ head, body, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width" />\n		' + head + "\n	</head>\n	<body>\n		<div>" + body + "</div>\n	</body>\n</html>\n";
+var app_template = ({ head, body, assets: assets2, nonce }) => '<!DOCTYPE html>\r\n<html lang="en">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\r\n		<meta name="viewport" content="width=device-width" />\r\n		' + head + "\r\n	</head>\r\n	<body>\r\n		<div>" + body + "</div>\r\n	</body>\r\n</html>\r\n";
 var error_template = ({ status, message }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -3113,7 +3118,7 @@ var manifest = {
   assets: /* @__PURE__ */ new Set(["favicon.png"]),
   mimeTypes: { ".png": "image/png" },
   _: {
-    entry: { "file": "_app/immutable/start-f9f017bc.js", "imports": ["_app/immutable/start-f9f017bc.js", "_app/immutable/chunks/index-4f5b2732.js", "_app/immutable/chunks/singletons-b617f7e7.js"], "stylesheets": [] },
+    entry: { "file": "_app/immutable/start-fcc987cb.js", "imports": ["_app/immutable/start-fcc987cb.js", "_app/immutable/chunks/index-4f5b2732.js", "_app/immutable/chunks/singletons-b5bf710b.js"], "stylesheets": [] },
     nodes: [
       () => Promise.resolve().then(() => (init__(), __exports)),
       () => Promise.resolve().then(() => (init__2(), __exports2)),
