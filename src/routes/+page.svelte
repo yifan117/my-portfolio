@@ -1,4 +1,6 @@
 <script lang="ts">
+	
+    import { onMount } from 'svelte';
 
     let headerContents = [
         { content: "Home"},
@@ -13,6 +15,22 @@
         { text: "C++", level: "80", color: "#80C07A"},
         { text: "Rust", level: "20", color: "#D06E61"}
     ];
+
+	onMount(() => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.log(entry)
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            } else {
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+    });
 
 </script>
 
@@ -38,22 +56,24 @@
             <div class="body-container">
                 <div class="hi-container">
                     <div class="hi">
-                            <p class="hi-text">Hi, I'm</p>
-                            <p class="hi-text-yifan" style="color: #2DA2E4">Yifan</p>
+                            <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span>
                     </div>
 
                     <div class="occupation">
                         <p class="sub-text">Full-Stack Developer | Student</p>
                     </div>
                 </div>
-
-                <div class="about-me">
-                    I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <br><span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
-                    <br><br>
-                    I have experience in <span style="color: #2DA2E4">Svelte</span>, Rust, <span style="color: #2DA2E4">HTML</span>, <span style="color: #2DA2E4">CSS</span>, <span style="color: #2DA2E4">JavaScript</span>, <span style="color: #2DA2E4">TypeScript</span>, and <span style="color: #2DA2E4">C++</span>.
-                </div>
             </div>
-        </div>
+    </section>
+            
+    <section>
+                <div class="about-me">
+                    <div class="text">
+                        I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
+                        <br><br>
+                        I have experience in <span style="color: #2DA2E4">Svelte</span>, Rust, <span style="color: #2DA2E4">HTML</span>, <span style="color: #2DA2E4">CSS</span>, <span style="color: #2DA2E4">JavaScript</span>, <span style="color: #2DA2E4">TypeScript</span>, and <span style="color: #2DA2E4">C++</span>.
+                    </div>
+                </div>
     </section>
 
     <section>
@@ -83,6 +103,7 @@
         color: #D8D8E7;
         font-family: 'Prompt';
         box-sizing: border-box;
+        text-size-adjust: auto;
     }
 
     .container {
@@ -95,10 +116,19 @@
         align-self: stretch;
         min-height: 100vh;
     }
+
     a, li, ul {
         text-decoration: none;
         list-style: none;
         display: flex;
+    }
+
+    ul {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0;
     }
 
     .page {
@@ -109,17 +139,17 @@
     }
 
     .logo {
+        order: 0;
         display: flex;
-        width: 100%;
-        font-size: 40px;
+        font-size: 3em;
         font-weight: 700;
+        align-items: flex-start;
     }
 
     .header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 300px;
         align-self: stretch;
         padding: 10px 30px 10px 30px;
         max-height: 20%;
@@ -127,62 +157,54 @@
 
     .header-contents {
         display: flex;
-        width: 100%;
-    }
-
-    .hi-container {
-        display: flex;
-        flex-direction: column;
     }
 
     ul {
-        width: 100%;
+        display: flex;
+        order: 1;
+        gap: 30px;
         justify-content: space-between;
-        font-size: 28px;
+        font-size: 1.8em;
         font-weight: 600;
+        align-items: flex-end;
+        justify-content: flex-start;
     }
 
     .body-container {
         display: flex;
         align-items: center;
-        gap: 500px;
-        padding: 20px;
+        justify-content: center;
+        align-self: stretch;
+        flex-grow: 0;
+        flex: none;
     }
 
     .about-me {
+        display: flex;
         font-weight: 600;
-        font-size: 24px;
+        font-size: 1.5em;
+        padding: 20px;
+        align-items: center;
+        text-align: center;
+
     }
 
-    .hi-container {
+    .occupation {
         display: flex;
-        flex-direction: column;
+        align-self: stretch;
         align-items: center;
+        justify-content: center;
     }
 
     .hi {
         display: flex;
-        flex: none;
-        order: 0;
-        flex-grow: 0;
-        width: 100%;
+        flex-direction: column;
+        align-items: center;
         gap: 30px;
     }
 
-    .column-div {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: none;
-    }
-
-    .row-div {
-        display: flex;
-        width: 100%;
-    }
-
     .hi-text, .hi-text-yifan {
-        font-size: 88px;
+        font-size: 6em;
         font-weight: 600;
     }
 
@@ -196,11 +218,6 @@
     .hi-text-yifan {
         display: flex;
         align-self: flex-end;
-        width: 100%;
-    }
-
-    .hi-text {
-        width: 30%;
     }
 
     .sub-text {
@@ -232,14 +249,26 @@
     }
 
     h2 {
-        width: 100%;
         display: flex;
         justify-content: center;
-        font-size: 39px;
+        font-size: 2.5em;
         font-weight: 600;
     }
 
     .skill-bar-container {
         display: flex;
+    }
+    
+    .hidden {
+        opacity: 0;
+        transition: all 5s;
+        filter: blur(5px);
+        transform: translateX(-100%);
+    }
+    
+    .show {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
     }
 </style>
