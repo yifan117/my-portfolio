@@ -1,6 +1,9 @@
-<script lang="ts">
+<script defer lang="ts">
 	
-    import { onMount } from 'svelte';
+    import IntersectionObserver from "svelte-intersection-observer";
+    import { inview } from 'svelte-inview';
+    import type { ObserverEventDetails, ScrollDirection, Options } from 'svelte-inview';
+	import { onMount } from "svelte";
 
     let headerContents = [
         { content: "Home"},
@@ -15,87 +18,83 @@
         { text: "C++", level: "80", color: "#80C07A"},
         { text: "Rust", level: "20", color: "#D06E61"}
     ];
-
-	onMount(() => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            console.log(entry)
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            } else {
-                entry.target.classList.remove('show');
-            }
+    
+    onMount (() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                console.log(entry)
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('.show');
+                } else {
+                    entry.target.classList.remove('.show');
+                }
+            });
         });
-    });
 
-    const hiddenElements = document.querySelectorAll('.hidden');
-    hiddenElements.forEach((el) => observer.observe(el));
+        const hiddenElements = document .querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
     });
-
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
-
-<div class="page">
-    <section>
-        <div class="container">
-            <div class="header">
-                <div class="logo">
-                    Placeholder
-                </div>
-
-                <div class="header-contents">
-                    <ul>
-                        {#each headerContents as headerContent}
-                        <li><a href="#">{headerContent.content}</a></li>
-                        {/each}
-                    </ul>
-                </div>
+<body>
+        <div class="header">
+            <div class="logo">
+                [yifan]
             </div>
 
-            <div class="body-container">
-                <div class="hi-container">
-                    <div class="hi">
-                            <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span>
-                    </div>
-
-                    <div class="occupation">
-                        <p class="sub-text">Full-Stack Developer | Student</p>
-                    </div>
-                </div>
-            </div>
-    </section>
-            
-    <section>
-                <div class="about-me">
-                    <div class="text">
-                        I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
-                        <br><br>
-                        I have experience in <span style="color: #2DA2E4">Svelte</span>, Rust, <span style="color: #2DA2E4">HTML</span>, <span style="color: #2DA2E4">CSS</span>, <span style="color: #2DA2E4">JavaScript</span>, <span style="color: #2DA2E4">TypeScript</span>, and <span style="color: #2DA2E4">C++</span>.
-                    </div>
-                </div>
-    </section>
-
-    <section>
-        <div class="container" style="justify-content: center">
-            <div class="skills-container">
-                <h2>Skills</h2>
-                <div class="level-container">
-                    <div class="skill">
-                        {#each skills as skill}
-                        <p class="skill-text">{skill.text}</p>
-                        <div class="skill-bar-container" style="width: 100%">
-                            <div class="skill-bar" style="width: {skill.level}%; background: {skill.color}; flex-grow: 0; order: 0; align-items: flex-start"></div>
-                            <div class="skill-bar-filler" style="background: rgba(216, 216, 231, 0.1); flex-grow: 1; order: 1; align-items: flex-end"></div>
-                        </div>
-                        {/each}
-                    </div>
-                </div>
+            <div class="header-contents">
+                <ul>
+                    {#each headerContents as headerContent}
+                    <li><a href="#">{headerContent.content}</a></li>
+                    {/each}
+                </ul>
             </div>
         </div>
-    </section>
-</div>
 
+        <section class="hidden">
+                <div class="body-container">
+                    <div class="hi-container">
+                        <div class="hi">
+                                <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span>
+                        </div>
+
+                        <div class="occupation">
+                            <p class="sub-text">Full-Stack Developer | Student</p>
+                        </div>
+                    </div>
+                </div>
+        </section>
+                
+        <section class="hidden">
+                    <div class="about-me">
+                        <div class="text">
+                            I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
+                            <br><br>
+                            I have experience in Svelte, Rust, HTML, CSS, JavaScript, TypeScript and C++.
+                        </div>
+                    </div>
+        </section>
+
+        <section class="hidden">
+            <div class="container" style="justify-content: center">
+                <div class="skills-container">
+                    <h2>Skills</h2>
+                    <div class="level-container">
+                        <div class="skill">
+                            {#each skills as skill}
+                            <p class="skill-text">{skill.text}</p>
+                            <div class="skill-bar-container" style="width: 100%">
+                                <div class="skill-bar" style="width: {skill.level}%; background: {skill.color}; flex-grow: 0; order: 0; align-items: flex-start"></div>
+                                <div class="skill-bar-filler" style="background: rgba(216, 216, 231, 0.1); flex-grow: 1; order: 1; align-items: flex-end"></div>
+                            </div>
+                            {/each}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</body>
 
 <style>
 
@@ -133,7 +132,7 @@
         padding-inline-start: 0;
     }
 
-    .page {
+    body {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -152,9 +151,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        align-self: stretch;
         padding: 10px 30px 10px 30px;
-        max-height: 20%;
+        height: 40%;
+        align-self: stretch;
     }
 
     .header-contents {
@@ -176,9 +175,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        align-self: stretch;
         flex-grow: 0;
         flex: none;
+        height: 80%;
     }
 
     .about-me {
@@ -202,11 +201,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
 
-    .hi-text, .hi-text-yifan {
+    .hi-text {
         font-size: 6em;
         font-weight: 600;
+        text-align: center;
     }
 
     p, h2 {
@@ -214,11 +215,6 @@
         margin-block-end: 0px;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-    }
-
-    .hi-text-yifan {
-        display: flex;
-        align-self: flex-end;
     }
 
     .sub-text {
@@ -234,9 +230,10 @@
     }
 
     .level-container {
-        width: 100%;
+        width: 60%;
         display: flex;
     }
+
     .skill {
         display: flex;
         flex-direction: column;
@@ -262,14 +259,14 @@
     
     .hidden {
         opacity: 0;
-        transition: all 5s;
-        filter: blur(5px);
-        transform: translateX(-100%);
+        transition: all 1s;
+        /* filter: blur(5px);
+        transform: translateX(-100%); */
     }
     
     .show {
         opacity: 1;
-        filter: blur(0);
-        transform: translateX(0);
+        /* filter: blur(0);
+        transform: translateX(0); */
     }
 </style>
