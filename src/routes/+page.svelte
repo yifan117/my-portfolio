@@ -1,9 +1,17 @@
-<script defer lang="ts">
+<script lang="ts">
 	
-    import IntersectionObserver from "svelte-intersection-observer";
-    import { inview } from 'svelte-inview';
-    import type { ObserverEventDetails, ScrollDirection, Options } from 'svelte-inview';
 	import { onMount } from "svelte";
+    import sticky from './sticky.js';
+
+    import IntersectionObserver from "svelte-intersection-observer";
+  
+    let element;
+    let intersecting;
+    let element2;
+    let intersecting2;
+    let element3;
+    let intersecting3;
+    let rootMargin;
 
     let headerContents = [
         { content: "Home"},
@@ -18,27 +26,34 @@
         { text: "C++", level: "80", color: "#80C07A"},
         { text: "Rust", level: "20", color: "#D06E61"}
     ];
-    
-    onMount (() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                console.log(entry)
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('.show');
-                } else {
-                    entry.target.classList.remove('.show');
-                }
-            });
-        });
 
-        const hiddenElements = document .querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
-    });
+    let stickToTop = true;
+
+    let isStuck = false;
+
+    function handleStuck(e) {
+        isStuck = e.detail.isStuck;
+    }
 </script>
 
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+
 <body>
-        <div class="header">
+
+    {#if !stickToTop}
+    <slot />
+    {/if}
+
+        <header class:intersecting>
+        </header>
+
+        <div 
+        class="header" 
+        class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
+        use:sticky={{ stickToTop }}
+        on:stuck={handleStuck}>
+
             <div class="logo">
                 [yifan]
             </div>
@@ -51,32 +66,46 @@
                 </ul>
             </div>
         </div>
-
-        <section class="hidden">
-                <div class="body-container">
-                    <div class="hi-container">
-                        <div class="hi">
-                                <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span>
-                        </div>
+            
+        <IntersectionObserver {element} bind:intersecting>
+            <section bind:this={element}>
+                {#if (intersecting === true)}                
+                <div class="hi-container" style="opacity: 1; transition: all 3s; filter: blur(0); transform: translateX(0);">
+                    <div class="hi">
+                        <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span></div>
 
                         <div class="occupation">
-                            <p class="sub-text">Full-Stack Developer | Student</p>
+                            Full-Stack Developer | Student
                         </div>
                     </div>
                 </div>
-        </section>
-                
-        <section class="hidden">
-                    <div class="about-me">
-                        <div class="text">
-                            I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
-                            <br><br>
-                            I have experience in Svelte, Rust, HTML, CSS, JavaScript, TypeScript and C++.
+                {:else}
+                <div class="hi-container" style="opacity: 0; transition: all 3s; filter: blur(5px); transform: translateX(-100%);">
+                    <div class="hi">
+                        <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span></div>
+
+                        <div class="occupation">
+                            Full-Stack Developer | Student
                         </div>
                     </div>
-        </section>
+                </div>
+                {/if}
+            </section>
+        </IntersectionObserver>
 
-        <section class="hidden">
+        <IntersectionObserver {element2} bind:intersecting2>
+            <section bind:this={element2}>             <div class="about-me">
+                    <div class="text">
+                        I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
+                        <br><br>
+                        I have experience in Svelte, Rust, HTML, CSS, JavaScript, TypeScript and C++.
+                    </div>
+            </div>
+        </section>
+    </IntersectionObserver>
+            
+        <IntersectionObserver {element3} bind:intersecting3>
+        <section bind:this={element3}>
             <div class="container" style="justify-content: center">
                 <div class="skills-container">
                     <h2>Skills</h2>
@@ -94,9 +123,25 @@
                 </div>
             </div>
         </section>
+    </IntersectionObserver>
+
+    {#if stickToTop}
+    <slot />
+    {/if}
 </body>
 
 <style>
+
+    header {
+        position: sticky;
+        z-index: 100;
+        opacity: 0;
+        left: 0;
+        width: 100%;
+        top: 0;
+        height: 1px;
+        padding: 0;
+    }
 
     * {
         color: #D8D8E7;
@@ -116,6 +161,7 @@
         display: grid;
         align-self: stretch;
         min-height: 100vh;
+        width: 100%;
     }
 
     a, li, ul {
@@ -137,6 +183,7 @@
         flex-direction: column;
         align-items: center;
         background: #1D1D1D;
+        margin-bottom: 1rem;
     }
 
     .logo {
@@ -149,11 +196,34 @@
 
     .header {
         display: flex;
+        position: sticky;
+        transition: all 0.3s;
         align-items: center;
         justify-content: space-between;
         padding: 10px 30px 10px 30px;
         height: 40%;
         align-self: stretch;
+    }
+
+    .header[data-position='top'] {
+        top: 0rem;
+        display: flex;
+        position: sticky;
+        transition: all 0.3s;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 30px 10px 30px;
+        height: 40%;
+        align-self: stretch;
+    }
+
+    .header[data-position='bottom'] {
+        bottom: 1rem;
+    }
+
+    .header.isStuck {
+        background: rgba(55, 55, 55, 1);
+        z-index: 1;
     }
 
     .header-contents {
@@ -169,15 +239,6 @@
         font-weight: 600;
         align-items: flex-end;
         justify-content: flex-start;
-    }
-
-    .body-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-grow: 0;
-        flex: none;
-        height: 80%;
     }
 
     .about-me {
@@ -204,6 +265,13 @@
         justify-content: center;
     }
 
+    .hi-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80%;
+    }
+
     .hi-text {
         font-size: 6em;
         font-weight: 600;
@@ -217,7 +285,7 @@
         margin-inline-end: 0px;
     }
 
-    .sub-text {
+    .occupation {
         opacity: 30%;
     }
 
@@ -257,16 +325,4 @@
         display: flex;
     }
     
-    .hidden {
-        opacity: 0;
-        transition: all 1s;
-        /* filter: blur(5px);
-        transform: translateX(-100%); */
-    }
-    
-    .show {
-        opacity: 1;
-        /* filter: blur(0);
-        transform: translateX(0); */
-    }
 </style>
