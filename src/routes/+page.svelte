@@ -1,5 +1,6 @@
 <script lang="ts">
-	
+    
+    import BackToTop from "./BackToTop.svelte";
 	import { onMount } from "svelte";
     import sticky from './sticky.js';
 
@@ -34,6 +35,7 @@
     function handleStuck(e) {
         isStuck = e.detail.isStuck;
     }
+
 </script>
 
 
@@ -58,6 +60,12 @@
                 [yifan]
             </div>
 
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+
             <div class="header-contents">
                 <ul>
                     {#each headerContents as headerContent}
@@ -67,8 +75,8 @@
             </div>
         </div>
 
-        <div class="whitespace"></div>
-
+        <BackToTop />
+        
         <IntersectionObserver {element} bind:intersecting>
             <section bind:this={element}>
                 {#if (intersecting === true)}                
@@ -332,6 +340,54 @@
 
     .skill-bar-container {
         display: flex;
+    }
+
+    .toggle-button {
+        position: absolute;
+        top: .75rem;
+        right: 1rem;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+    }
+
+    .toggle-button .bar {
+        height: 3px;
+        width: 100%;
+        background-color: #D8D8E7;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+        .toggle-button {
+            display: flex;
+        }
+
+        .header-contents {
+            width: 100%;
+            display: none;
+        }
+
+        .header-contents.active {
+            display: flex;
+        }
+
+        .header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header-contents ul {
+            width: 100%;
+            flex-direction: column;
+        }
+        
+
+        .header-contents li {
+            text-align: center;
+        }
     }
     
 </style>
