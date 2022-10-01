@@ -66,12 +66,14 @@
                 </ul>
             </div>
         </div>
-            
+
+        <div class="whitespace"></div>
+
         <IntersectionObserver {element} bind:intersecting>
             <section bind:this={element}>
                 {#if (intersecting === true)}                
-                <div class="hi-container" style="opacity: 1; transition: all 3s; filter: blur(0); transform: translateX(0);">
-                    <div class="hi">
+                <div class="hi-container">
+                    <div class="hi" style="align-self: flex-end;">
                         <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span></div>
 
                         <div class="occupation">
@@ -150,6 +152,9 @@
         text-size-adjust: auto;
     }
 
+    .whitespace {
+        height: 20vh;
+    }
     .container {
         gap: 220px;
         display: flex;
@@ -199,21 +204,20 @@
         position: sticky;
         transition: all 0.3s;
         align-items: center;
-        justify-content: space-between;
-        padding: 10px 30px 10px 30px;
-        height: 40%;
         align-self: stretch;
+        gap: 200px;
     }
 
     .header[data-position='top'] {
         top: 0rem;
         display: flex;
+        flex-direction: column;
         position: sticky;
+        font-size: 1.6em;
         transition: all 0.3s;
         align-items: center;
-        justify-content: space-between;
-        padding: 10px 30px 10px 30px;
-        height: 40%;
+        padding: 100px;
+        height: 100vh;
         align-self: stretch;
     }
 
@@ -224,6 +228,11 @@
     .header.isStuck {
         background: rgba(55, 55, 55, 1);
         z-index: 1;
+        font-size: 1em;
+        flex-direction: row;
+        height: 40%;
+        justify-content: space-between;
+        padding: 10px 30px 10px 30px;
     }
 
     .header-contents {
