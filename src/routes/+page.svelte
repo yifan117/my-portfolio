@@ -1,10 +1,10 @@
 <script lang="ts">
     
-    import BackToTop from "./BackToTop.svelte";
-	import { onMount } from "svelte";
+    import CommunitySphere from "./lib/CommunityEngagementSphere.svelte";
+    import BackToTop from "./lib/BackToTop.svelte";
     import sticky from './sticky.js';
 
-    import CubeAnimation from "./cubeAnimation.svelte";
+    import CubeAnimation from "./lib/cubeAnimation.svelte";
 
     import Saos from "saos";
   
@@ -51,9 +51,12 @@
         use:sticky={{ stickToTop }}
         on:stuck={handleStuck}>
 
+        <Saos
+        animation={'vibrate-1 0.3s linear infinite both'}>
             <div class="logo">
                 [yifan]
             </div>
+        </Saos>
 
             <a href="#" class="toggle-button">
                 <span class="bar"></span>
@@ -102,18 +105,20 @@
     </Saos>
             
         <section>
-            <Saos animation={'swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both'}>           
+            <Saos animation={'swing-in-top-fwd 2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both'}>           
                 <div class="container" style="justify-content: center">
                     <div class="skills-container">
                         <h2>Skills</h2>
                         <div class="level-container">
                             <div class="skill">
                                 {#each skills as skill}
-                                <p class="skill-text">{skill.text}</p>
-                                <div class="skill-bar-container" style="width: 100%">
-                                    <div class="skill-bar" style="width: {skill.level}%; background: {skill.color}; flex-grow: 0; order: 0; align-items: flex-start"></div>
-                                    <div class="skill-bar-filler" style="background: rgba(216, 216, 231, 0.1); flex-grow: 1; order: 1; align-items: flex-end"></div>
-                                </div>
+                                    <Saos animation={'fade-in-left 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.1s both'}>           
+                                        <p class="skill-text">{skill.text}</p>
+                                        <div class="skill-bar-container" style="width: 100%;">
+                                            <div class="skill-bar" style="width: {skill.level}%; background: {skill.color}; flex-grow: 0; order: 0; align-items: flex-start"></div>
+                                            <div class="skill-bar-filler" style="background: rgba(216, 216, 231, 0.1); flex-grow: 1; order: 1; align-items: flex-end"></div>
+                                        </div>
+                                    </Saos>
                                 {/each}
                             </div>
                         </div>
@@ -122,12 +127,48 @@
             </Saos>
         </section>
 
+        <section>
+            <Saos
+            animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>
+                <h2>Community Engagement</h2>
+
+            </Saos>
+
+            <CommunitySphere/>
+        </section>
+
     {#if stickToTop}
     <slot />
     {/if}
+
 </body>
 
 <style>
+
+    .skill:nth-child(2) {
+        transition-delay: 200ms;
+    }
+
+    .skill:nth-child(3) {
+        transition-delay: 300ms;
+    }
+
+    .skill:nth-child(4) {
+        transition-delay: 400ms;
+    }
+
+    @keyframes -global-fade-in-left {
+        0% {
+            -webkit-transform: translateX(-50px);
+                    transform: translateX(-50px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+            opacity: 1;
+        }
+    }
 
     @keyframes -global-scale-in-center {
         0% {
@@ -175,6 +216,32 @@
         }
     }
 
+    @keyframes -global-vibrate-1 {
+        0% {
+            -webkit-transform: translate(0);
+                    transform: translate(0);
+        }
+        20% {
+            -webkit-transform: translate(-2px, 2px);
+                    transform: translate(-2px, 2px);
+        }
+        40% {
+            -webkit-transform: translate(-2px, -2px);
+                    transform: translate(-2px, -2px);
+        }
+        60% {
+            -webkit-transform: translate(2px, 2px);
+                    transform: translate(2px, 2px);
+        }
+        80% {
+            -webkit-transform: translate(2px, -2px);
+                    transform: translate(2px, -2px);
+        }
+        100% {
+            -webkit-transform: translate(0);
+                    transform: translate(0);
+        }
+    }
 
     * {
         color: #D8D8E7;
@@ -393,10 +460,6 @@
         .header-contents {
             width: 100%;
             display: none;
-        }
-
-        .header-contents.active {
-            display: flex;
         }
 
         .header {

@@ -1,7 +1,9 @@
 <script>
     import Animations from "./SAOS-animations.svelte";
+    import Sphere from "../lib/CommunityEngagementSphere.svelte";
   </script>
   
+  <Sphere/>
   <style>
     main {
       display: grid;
