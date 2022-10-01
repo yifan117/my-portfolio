@@ -237,6 +237,7 @@
         align-self: stretch;
         width: 100%;
         gap: 200px;
+        z-index: 999;
     }
 
     .header[data-position='top'] {
