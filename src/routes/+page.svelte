@@ -4,6 +4,8 @@
 	import { onMount } from "svelte";
     import sticky from './sticky.js';
 
+    import CubeAnimation from "./cubeAnimation.svelte";
+
     import Saos from "saos";
   
     function handleObserver(x: CustomEvent<any>) {
@@ -68,7 +70,7 @@
             </div>
         </div>
 
-        <BackToTop />
+        <BackToTop/>
 
         <section></section>
 
@@ -83,11 +85,12 @@
                         </div>
                     </div>
                 </div>
+
+                <CubeAnimation/>
         </Saos>
 
-        <section></section>
-
-            <Saos animation={'from-left 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both'}>           
+        <Saos animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>           
+            <section style="padding: 100px 0px 0px 0px">
                 <div class="about-me">
                     <div class="text">
                         I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
@@ -95,12 +98,11 @@
                         I have experience in Svelte, Rust, HTML, CSS, JavaScript, TypeScript and C++.
                     </div>
             </div>
-            </Saos>
+        </section>
+    </Saos>
             
-        <section></section>
-
         <section>
-            <Saos animation={'swing-in-top-fwd 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275) both'}>           
+            <Saos animation={'swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both'}>           
                 <div class="container" style="justify-content: center">
                     <div class="skills-container">
                         <h2>Skills</h2>
@@ -126,17 +128,6 @@
 </body>
 
 <style>
-
-    @keyframes -global-from-left {
-        0% {
-            transform: rotateX(50deg) translateX(-200vw) skewX(-50deg);
-            opacity: 1;
-        }
-        100% {
-            transform: rotateX(0deg) translateX(0) skewX(0deg);
-            opacity: 1;
-        }
-    }
 
     @keyframes -global-scale-in-center {
         0% {
@@ -377,7 +368,6 @@
     }
 
     .toggle-button {
-        position: absolute;
         top: .75rem;
         right: 1rem;
         display: none;
