@@ -4,15 +4,11 @@
 	import { onMount } from "svelte";
     import sticky from './sticky.js';
 
-    import IntersectionObserver from "svelte-intersection-observer";
+    import Saos from "saos";
   
-    let element;
-    let intersecting;
-    let element2;
-    let intersecting2;
-    let element3;
-    let intersecting3;
-    let rootMargin;
+    function handleObserver(x: CustomEvent<any>) {
+    console.info(x.detail.observing);
+  }
 
     let headerContents = [
         { content: "Home"},
@@ -47,9 +43,6 @@
     <slot />
     {/if}
 
-        <header class:intersecting>
-        </header>
-
         <div 
         class="header" 
         class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
@@ -76,11 +69,12 @@
         </div>
 
         <BackToTop />
-        
-        <IntersectionObserver {element} bind:intersecting>
-            <section bind:this={element}>
-                {#if (intersecting === true)}                
-                <div class="hi-container">
+
+        <section></section>
+
+        <Saos
+        animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>
+        <div class="hi-container">
                     <div class="hi" style="align-self: flex-end;">
                         <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span></div>
 
@@ -89,51 +83,42 @@
                         </div>
                     </div>
                 </div>
-                {:else}
-                <div class="hi-container" style="opacity: 0; transition: all 3s; filter: blur(5px); transform: translateX(-100%);">
-                    <div class="hi">
-                        <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span></div>
+        </Saos>
 
-                        <div class="occupation">
-                            Full-Stack Developer | Student
-                        </div>
-                    </div>
-                </div>
-                {/if}
-            </section>
-        </IntersectionObserver>
+        <section></section>
 
-        <IntersectionObserver {element2} bind:intersecting2>
-            <section bind:this={element2}>             <div class="about-me">
+            <Saos animation={'from-left 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both'}>           
+                <div class="about-me">
                     <div class="text">
                         I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
                         <br><br>
                         I have experience in Svelte, Rust, HTML, CSS, JavaScript, TypeScript and C++.
                     </div>
             </div>
-        </section>
-    </IntersectionObserver>
+            </Saos>
             
-        <IntersectionObserver {element3} bind:intersecting3>
-        <section bind:this={element3}>
-            <div class="container" style="justify-content: center">
-                <div class="skills-container">
-                    <h2>Skills</h2>
-                    <div class="level-container">
-                        <div class="skill">
-                            {#each skills as skill}
-                            <p class="skill-text">{skill.text}</p>
-                            <div class="skill-bar-container" style="width: 100%">
-                                <div class="skill-bar" style="width: {skill.level}%; background: {skill.color}; flex-grow: 0; order: 0; align-items: flex-start"></div>
-                                <div class="skill-bar-filler" style="background: rgba(216, 216, 231, 0.1); flex-grow: 1; order: 1; align-items: flex-end"></div>
+        <section></section>
+
+        <section>
+            <Saos animation={'swing-in-top-fwd 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275) both'}>           
+                <div class="container" style="justify-content: center">
+                    <div class="skills-container">
+                        <h2>Skills</h2>
+                        <div class="level-container">
+                            <div class="skill">
+                                {#each skills as skill}
+                                <p class="skill-text">{skill.text}</p>
+                                <div class="skill-bar-container" style="width: 100%">
+                                    <div class="skill-bar" style="width: {skill.level}%; background: {skill.color}; flex-grow: 0; order: 0; align-items: flex-start"></div>
+                                    <div class="skill-bar-filler" style="background: rgba(216, 216, 231, 0.1); flex-grow: 1; order: 1; align-items: flex-end"></div>
+                                </div>
+                                {/each}
                             </div>
-                            {/each}
                         </div>
                     </div>
                 </div>
-            </div>
+            </Saos>
         </section>
-    </IntersectionObserver>
 
     {#if stickToTop}
     <slot />
@@ -142,16 +127,63 @@
 
 <style>
 
-    header {
-        position: sticky;
-        z-index: 100;
-        opacity: 0;
-        left: 0;
-        width: 100%;
-        top: 0;
-        height: 1px;
-        padding: 0;
+    @keyframes -global-from-left {
+        0% {
+            transform: rotateX(50deg) translateX(-200vw) skewX(-50deg);
+            opacity: 1;
+        }
+        100% {
+            transform: rotateX(0deg) translateX(0) skewX(0deg);
+            opacity: 1;
+        }
     }
+
+    @keyframes -global-scale-in-center {
+        0% {
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+      }
+    }
+
+    @keyframes -global-focus-in-contract-bck {
+        0% {
+            letter-spacing: 1em;
+            -webkit-transform: translateZ(300px);
+                    transform: translateZ(300px);
+            -webkit-filter: blur(12px);
+                    filter: blur(12px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateZ(12px);
+                    transform: translateZ(12px);
+            -webkit-filter: blur(0);
+                    filter: blur(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes -global-swing-in-top-fwd {
+        0% {
+            -webkit-transform: rotateX(-100deg);
+                    transform: rotateX(-100deg);
+            -webkit-transform-origin: top;
+                    transform-origin: top;
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: rotateX(0deg);
+                    transform: rotateX(0deg);
+            -webkit-transform-origin: top;
+                    transform-origin: top;
+            opacity: 1;
+        }
+    }
+
 
     * {
         color: #D8D8E7;
@@ -160,14 +192,13 @@
         text-size-adjust: auto;
     }
 
-    .whitespace {
-        height: 20vh;
-    }
     .container {
         gap: 220px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        align-self: stretch;
+        width: 100%;
 }
 
     section {
@@ -213,6 +244,7 @@
         transition: all 0.3s;
         align-items: center;
         align-self: stretch;
+        width: 100%;
         gap: 200px;
     }
 
@@ -224,6 +256,7 @@
         font-size: 1.6em;
         transition: all 0.3s;
         align-items: center;
+        width: 100%;
         padding: 100px;
         height: 100vh;
         align-self: stretch;
@@ -312,6 +345,7 @@
         padding: 20px 30px 20px 30px;
         align-items: center;
         align-self: stretch;
+        width: 100%;
     }
 
     .level-container {
