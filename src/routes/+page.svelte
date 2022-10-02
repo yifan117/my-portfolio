@@ -2,7 +2,7 @@
     
     import CommunitySphere from "./lib/CommunityEngagementSphere.svelte";
     import BackToTop from "./lib/BackToTop.svelte";
-    import sticky from './lib/sticky.js';
+    import sticky from './sticky.js';
   
     import CubeAnimation from "./lib/cubeAnimation.svelte";
   
@@ -505,7 +505,19 @@
             flex-direction: column;
             align-items: flex-start;
         }
+
+        .header.isStuck .header-contents {
+            display: none;
+        }
   
+        .header[data-position='top'] .header-contents {
+            display: none;
+        }
+
+        .header[data-position='top'] .toggle-button {
+            display: none;
+        }
+        
         .header-contents ul {
             width: 100%;
             flex-direction: column;

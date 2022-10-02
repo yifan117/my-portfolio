@@ -1,5 +1,5 @@
 <script lang="ts">
-    import sticky from '../lib/sticky.js';
+    import sticky from '../sticky.js';
     import Saos from "saos";
 
     let headerContents = [
