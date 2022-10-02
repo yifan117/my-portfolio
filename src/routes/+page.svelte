@@ -134,7 +134,9 @@
 
             </Saos>
 
-            <CommunitySphere/>
+            <canvas>
+                <CommunitySphere/>
+            </canvas>
         </section>
 
     {#if stickToTop}
@@ -272,14 +274,6 @@
         display: flex;
     }
 
-    ul {
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 0;
-    }
-
     body {
         display: flex;
         flex-direction: column;
@@ -319,6 +313,7 @@
         padding: 100px;
         height: 100vh;
         align-self: stretch;
+        z-index: 999;
     }
 
     .header[data-position='bottom'] {
@@ -327,7 +322,7 @@
 
     .header.isStuck {
         background: rgba(55, 55, 55, 1);
-        z-index: 1;
+        z-index: 999;
         font-size: 1em;
         flex-direction: row;
         height: 40%;
@@ -335,15 +330,10 @@
         padding: 10px 30px 10px 30px;
     }
 
-    .header-contents {
-        display: flex;
-    }
-
     ul {
         display: flex;
         order: 1;
         gap: 30px;
-        justify-content: space-between;
         font-size: 1.8em;
         font-weight: 600;
         align-items: flex-end;
@@ -387,11 +377,12 @@
         text-align: center;
     }
 
-    p, h2 {
-        margin-block-start: 0px;
-        margin-block-end: 0px;
+    p, h2, ul {
+        margin-block-start: 0;
+        margin-block-end: 0;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
+        padding-inline-start: 0;
     }
 
     .occupation {
