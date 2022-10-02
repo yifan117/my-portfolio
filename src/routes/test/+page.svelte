@@ -2,7 +2,7 @@
     
   import CommunitySphere from "../lib/CommunityEngagementSphere.svelte";
   import BackToTop from "../lib/BackToTop.svelte";
-  import sticky from '../lib/sticky.js';
+  import sticky from '../sticky.js';
 
   import CubeAnimation from "../lib/cubeAnimation.svelte";
 
