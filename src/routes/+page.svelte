@@ -530,6 +530,10 @@
             justify-content: center;
         }
 
+        .toggle-button {
+            cursor: pointer;
+        }
+
         .header[data-position='top'] .logo {
             font-size: 1.4em;
         }
