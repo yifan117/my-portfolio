@@ -7,7 +7,7 @@
     import CubeAnimation from "./lib/cubeAnimation.svelte";
   
     import Saos from "saos";
-  
+
     function handleObserver(x: CustomEvent<any>) {
     console.info(x.detail.observing);
   }
@@ -33,7 +33,15 @@
     function handleStuck(e) {
         isStuck = e.detail.isStuck;
     }
-  
+
+    let toggleCount = 0;
+
+    $: toggleCountd = toggleCount % 2;
+
+    function toggleBurger() {
+        toggleCount += 1;
+    }
+
   </script>
   
   
@@ -51,19 +59,26 @@
         use:sticky={{ stickToTop }}
         on:stuck={handleStuck}>
   
+
+    
+    <div class="logo-wrapper">
+
         <Saos
         animation={'vibrate-1 0.3s linear infinite both'}>
             <div class="logo">
                 [yifan]
             </div>
         </Saos>
-  
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-  
+
+        <button class="toggle-button" on:click={toggleBurger}>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+    </div>
+
+    {#if (toggleCountd === 0)}
             <div class="header-contents">
                 <ul>
                     {#each headerContents as headerContent}
@@ -71,8 +86,16 @@
                     {/each}
                 </ul>
             </div>
+            {:else}
+            <div class="header-contents-active">
+                <ul>
+                    {#each headerContents as headerContent}
+                    <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
+                    {/each}
+                </ul>
+            </div>
+            {/if}
         </div>
-  
         <BackToTop/>
   
         <section></section>
@@ -482,6 +505,9 @@
         justify-content: space-between;
         width: 30px;
         height: 21px;
+        padding: 0px;
+        background: none;
+        border: none;
     }
   
     .toggle-button .bar {
@@ -491,42 +517,74 @@
         border-radius: 10px;
     }
   
-    @media (max-width: 860px) {
-        .toggle-button {
-            display: flex;
-        }
-  
-        .header-contents {
-            width: 100%;
-            display: none;
-        }
+    @media (max-width: 1000px) {
   
         .header {
             flex-direction: column;
             align-items: flex-start;
         }
-
-        .header.isStuck .header-contents {
-            display: none;
-        }
   
         .header[data-position='top'] .header-contents {
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header[data-position='top'] .logo {
+            font-size: 1.4em;
         }
 
         .header[data-position='top'] .toggle-button {
             display: none;
         }
 
-        .header-contents ul {
+        .header[data-position='top'] .header-contents ul {
             width: 100%;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
   
-        .header-contents li {
+        .header[data-position='top'] .header-contents li {
             text-align: center;
+            width: 100%;
+            font-size: 0.6em;
+            align-items: center;
+            justify-content: center;
         }
+
+        .header.isStuck .toggle-button {
+            display: flex;
+        }
+
+        .header.isStuck .logo-wrapper {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header.isStuck {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .header.isStuck .header-contents {
+            display: none;
+        }
+
+        .header-contents-active {
+            display: flex;
+            flex-direction: column;
+            height: 20%;
+        }
+
+        .header-contents-active ul {
+            flex-direction: column;
+        }
+
     }
     
   </style>
