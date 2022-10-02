@@ -1,20 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<svelte:head>
-    <!-- Including the TagCloud.js script CDN in the document    -->
-    <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"> </script>
-    </svelte:head>
-    
-    <body>
     <span class="Sphere"></span>
 
-
+    <!-- Including the TagCloud.js script CDN in the document    -->
+    <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"> </script>
     <script>
         const Texts = [
-            'HTML', 'CSS', 'JAVASCRIPT',
-            'SWIFT', 'MONGOOSE', 'REACT',
-            'PYTHON', 'SASS',
-            'DJANGO', 'NODEJS', 'MONGODB',
-            'EXPRESS', 'MYSQL', 'JQUERY', 'JAVA'
+            'Computer Science Club', 
+            'Competitive Programming Club', 
+            'Fn Main() Tutoring'
         ];
 
         var tagCloud = TagCloud('.Sphere', Texts, {
@@ -39,20 +34,13 @@
         var color = '#FF5733 ';
         document.querySelector('.Sphere').style.color = color;
     </script>
-</body>
+
+</html>
 
 <style>
-     /*     Importing Google fonts    */
- 
- /* Applying CSS to sphere */
-.tagcloud {
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 20px;
-}
-
-/* Change color of each text in sphere on hover   */
-.tagcloud--item:hover {
-  color: #FFC300 ;
-}
+    .Sphere {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>

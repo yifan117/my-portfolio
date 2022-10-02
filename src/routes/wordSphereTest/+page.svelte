@@ -7,11 +7,9 @@
     <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"> </script>
     <script>
         const Texts = [
-            'HTML', 'CSS', 'JAVASCRIPT',
-            'SWIFT', 'MONGOOSE', 'REACT',
-            'PYTHON', 'SASS',
-            'DJANGO', 'NODEJS', 'MONGODB',
-            'EXPRESS', 'MYSQL', 'JQUERY', 'JAVA'
+            'Computer Science Club', 
+            'Competitive Programming Club', 
+            'Fn Main() Tutoring'
         ];
 
         var tagCloud = TagCloud('.Sphere', Texts, {
@@ -38,25 +36,3 @@
     </script>
 
 </html>
-
-<style>
-     /*     Importing Google fonts    */
- @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
- 
- /* Applying CSS to sphere */
-.tagcloud {
-  display: inline-block;
-  top: 100px;
-  left: 32%;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 20px;
-}
-
-/* Change color of each text in sphere on hover   */
-.tagcloud--item:hover {
-  color: #FFC300 ;
-}
-
-</style>
