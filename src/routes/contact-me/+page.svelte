@@ -4,8 +4,8 @@
 
     let headerContents = [
         { content: "Home", link: "../"},
-        { content: "Portfolio"},
-        { content: "Hire"},
+        { content: "Portfolio", link: "../portfolio"},
+        { content: "Hire", link: "../hire"},
         { content: "Contact"}
     ];
 
