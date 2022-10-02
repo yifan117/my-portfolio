@@ -37,6 +37,7 @@
 	"dependencies": {
 		"jquery": "^3.6.1",
 		"saos": "^1.3.1",
+		"svelte-easyforms": "^1.0.5",
 		"svelte-inview": "^3.0.1",
 		"svelte-material-icons": "^2.0.4"
 	}
