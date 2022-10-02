@@ -16,6 +16,14 @@
     function handleStuck(e) {
         isStuck = e.detail.isStuck;
     }
+
+        let toggleCount = 0;
+
+    $: toggleCountd = toggleCount % 2;
+
+    function toggleBurger() {
+        toggleCount += 1;
+    }
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
@@ -29,8 +37,9 @@
     <div 
     class="header" 
     class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
-    use:sticky={{ stickToTop }}
-    on:stuck={handleStuck}>
+    use:sticky={{ stickToTop }}>
+
+    <div class="logo-wrapper">
 
         <Saos
         animation={'vibrate-1 0.3s linear infinite both'}>
@@ -39,19 +48,31 @@
             </div>
         </Saos>
 
-        <a href="#" class="toggle-button">
+        <button class="toggle-button" on:click={toggleBurger}>
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </a>
+        </button>
 
-        <div class="header-contents">
-            <ul>
-                {#each headerContents as headerContent}
-                <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
-                {/each}
-            </ul>
-        </div>
+    </div>
+
+    {#if (toggleCountd === 0)}
+            <div class="header-contents">
+                <ul>
+                    {#each headerContents as headerContent}
+                    <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
+                    {/each}
+                </ul>
+            </div>
+            {:else}
+            <div class="header-contents-active">
+                <ul>
+                    {#each headerContents as headerContent}
+                    <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
+                    {/each}
+                </ul>
+            </div>
+            {/if}
     </div>
 
     <div class="container">
@@ -433,7 +454,20 @@
         border-radius: 10px;
     }
 
-    @media (max-width: 600px) {
+        .toggle-button {
+        top: .75rem;
+        right: 1rem;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        padding: 0px;
+        background: none;
+        border: none;
+    }
+
+    @media (max-width: 1000px) {
         .toggle-button {
             display: flex;
         }
@@ -461,13 +495,86 @@
             flex-direction: column;
         }
 
+        .header.isStuck {
+            display: flex;
+        }
+
+        .header.isStuck ul {
+            flex-direction: column;
+            align-items: center;
+            flex-direction: center;
+            display: flex;
+            padding: 0px;
+        }
+
         .header[data-position='top'] .header-contents {
             display: none;
+            flex-direction: column;
+            align-items: center;
+        flex-direction: center;
+    }
+
+    .header[data-position='top'] ul {
+        flex-direction: column;
+        align-items: center;
+        flex-direction: center;
+        display: flex;
+        padding: 0px;
+    }
+
+    .header[data-position='top'] .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header[data-position='top'] {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .header.isStuck .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 
     .header.isStuck {
         display: flex;
+        flex-direction: column;
+        z-index: 999;
     }
 
+    .header-contents-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        padding: none;
+        width: 100%;
     }
+    ul {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .header {
+        z-index: 999;
+    }
+
+        .toggle-button {
+            cursor: pointer;
+        }
+
+        
+    .header[data-position='top'] .header-contents-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 </style>
