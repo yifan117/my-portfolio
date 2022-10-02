@@ -156,12 +156,15 @@
     }
 
         body {
-            padding: 0px 0px 50px 0px;
             display: flex;
             flex-direction: column;
             align-items: center;
             background: #1D1D1D;
             margin-bottom: 0rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 0px 0px 50px 0px;
         }
     
         .cards-container {
