@@ -85,7 +85,11 @@
                     <input type="text" name="email" required>
                     <span>Email</span>
                 </div>
-                
+                <div class="inputBox">
+                    <textarea name="message" placeholder="Enter your message here..."></textarea> <!-- Optional -->
+            </div>
+
+
                 <input type="hidden" name="redirectTo" value="https://www.yifan-lu.com"> <!-- Optional -->
                 <input type="submit" value="Submit"/>
 
@@ -184,7 +188,7 @@
         padding: 150px;
         flex-direction: column;
         width: 40%;
-        height: 30%;
+        height: 70%;
         background: rgba(255, 255, 255, 0.15);
         border-radius: 16px;
         gap: 10px;
@@ -197,7 +201,7 @@
         color: #D8D8E7;
     }
     
-    .inputBox input {
+    .inputBox input, textarea {
         width: 100%;
         padding: 10px;
         outline: none;
@@ -210,7 +214,7 @@
         transition: 0.1s;
     }
     
-    .inputBox input:focus {
+    .inputBox input:focus, textarea:focus {
         border: 2px solid #1D1D1D;
         transition: 1s;
     }
@@ -332,7 +336,8 @@
       display: flex;
       align-items: center;
       width: 100%;
-      justify-content: space-around;
+      justify-content: flex-end;
+      gap: 100px;
     }
   
     .header.isStuck ul {
