@@ -491,7 +491,7 @@
         border-radius: 10px;
     }
   
-    @media (max-width: 600px) {
+    @media (max-width: 860px) {
         .toggle-button {
             display: flex;
         }
@@ -517,7 +517,7 @@
         .header[data-position='top'] .toggle-button {
             display: none;
         }
-        
+
         .header-contents ul {
             width: 100%;
             flex-direction: column;
