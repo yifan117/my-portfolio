@@ -56,7 +56,7 @@
 
     <div class="container">
         <div class="card">
-            <h3>Sign Up To Here About New Projects</h3>
+            <h3>Sign Up To Hear About New Projects</h3>
             <form action="https://api.staticforms.xyz/submit" method="post">
                 <input type="hidden" name="accessKey" value="1abfbd67-ce48-4632-9b7e-432d080c688a"> <!-- Required -->
             <div class="wrapper">
@@ -415,6 +415,7 @@
         align-self: stretch;
         z-index: 999;
     }
+
     .toggle-button {
         top: .75rem;
         right: 1rem;
@@ -443,7 +444,6 @@
         }
 
         .header {
-            flex-direction: column;
             align-items: flex-start;
         }
 
@@ -456,5 +456,18 @@
         .header-contents li {
             text-align: center;
         }
+
+        .container {
+            flex-direction: column;
+        }
+
+        .header[data-position='top'] .header-contents {
+            display: none;
+    }
+
+    .header.isStuck {
+        display: flex;
+    }
+
     }
 </style>
