@@ -172,7 +172,6 @@
         background: #1D1D1D;
         margin-bottom: 1rem;
         align-self: stretch;
-        gap: 50px;
     }
 
     .container {
