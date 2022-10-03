@@ -1,111 +1,62 @@
 <script lang="ts">
-
-    import sticky from '../lib/sticky.js';
-
-    import Saos from "saos";
-
-    let headerContents = [
-        { content: "Home", link: "../+page.svelte"},
-        { content: "Portfolio"},
-        { content: "Hire Me"},
+        let headerContents = [
+        { content: "Home", link: "../"},
+        { content: "Portfolio", link: "../portfolio"},
+        { content: "Hire", link: "../hire"},
         { content: "Contact"}
     ];
-    let stickToTop = true;
 
-    let isStuck = false;
+        let toggleCount = 0;
 
-    function handleStuck(e) {
-        isStuck = e.detail.isStuck;
+    $: toggleCountd = toggleCount % 2;
+
+    function toggleBurger() {
+        toggleCount += 1;
     }
-
 </script>
+<div 
+class="header">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+<div class="logo-wrapper">
 
-<body>
-
-    {#if !stickToTop}
-    <slot />
-    {/if}
-
-        <div 
-        class="header" 
-        class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
-        use:sticky={{ stickToTop }}
-        on:stuck={handleStuck}>
-
-        <Saos
-        animation={'vibrate-1 0.3s linear infinite both'}>
-            <div class="logo">
-                [yifan]
-            </div>
-        </Saos>
-
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-
-            <div class="header-contents">
-                <ul>
-                    {#each headerContents as headerContent}
-                    <li><a href="{headerContent.link}">{headerContent.content}</a></li>
-                    {/each}
-                </ul>
-            </div>
+        <div class="logo">
+            [yifan]
         </div>
-    {#if stickToTop}
-    <slot />
-    {/if}
 
-</body>
+    <button class="toggle-button" on:click={toggleBurger}>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+</div>
+
+{#if (toggleCountd === 0)}
+        <div class="header-contents">
+            <ul>
+                {#each headerContents as headerContent}
+                <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
+                {/each}
+            </ul>
+        </div>
+        {:else}
+        <div class="header-contents-active">
+            <ul>
+                {#each headerContents as headerContent}
+                <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
+                {/each}
+            </ul>
+        </div>
+        {/if}
+</div>
+
 <style>
-    @keyframes -global-vibrate-1 {
-        0% {
-            -webkit-transform: translate(0);
-                    transform: translate(0);
-        }
-        20% {
-            -webkit-transform: translate(-2px, 2px);
-                    transform: translate(-2px, 2px);
-        }
-        40% {
-            -webkit-transform: translate(-2px, -2px);
-                    transform: translate(-2px, -2px);
-        }
-        60% {
-            -webkit-transform: translate(2px, 2px);
-                    transform: translate(2px, 2px);
-        }
-        80% {
-            -webkit-transform: translate(2px, -2px);
-                    transform: translate(2px, -2px);
-        }
-        100% {
-            -webkit-transform: translate(0);
-                    transform: translate(0);
-        }
-    }
-    * {
+        * {
         color: #D8D8E7;
         font-family: 'Prompt';
         box-sizing: border-box;
         text-size-adjust: auto;
-    }
-    a, li, ul {
-        text-decoration: none;
-        list-style: none;
-        display: flex;
-    }
-
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #1D1D1D;
-        margin-bottom: 1rem;
-    }
+    }     
 
     .logo {
         order: 0;
@@ -115,46 +66,48 @@
         align-items: flex-start;
     }
 
-    .header {
+    a, li, ul {
+        text-decoration: none;
+        list-style: none;
         display: flex;
-        position: sticky;
-        transition: all 0.3s;
-        align-items: center;
-        align-self: stretch;
-        width: 100%;
-        gap: 200px;
-        z-index: 999;
     }
-
-    .header[data-position='top'] {
-        top: 0rem;
+    
+    li {
+        cursor: pointer;
+    }
+    .logo {
+        order: 0;
         display: flex;
-        flex-direction: column;
-        position: sticky;
-        font-size: 1.6em;
-        transition: all 0.3s;
-        align-items: center;
-        width: 100%;
-        padding: 100px;
-        height: 100vh;
-        align-self: stretch;
-        z-index: 999;
+        font-size: 3em;
+        font-weight: 700;
+        align-items: flex-start;
+    }
+  
+    .header-contents {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .header ul {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: flex-end;
+      gap: 100px;
     }
 
-    .header[data-position='bottom'] {
-        bottom: 1rem;
+    .header .header-contents {
+      display: flex;
+      justify-content: flex-end;
     }
 
-    .header.isStuck {
-        background: rgba(55, 55, 55, 1);
-        z-index: 999;
-        font-size: 1em;
-        flex-direction: row;
-        height: 40%;
-        justify-content: space-between;
-        padding: 10px 30px 10px 30px;
+    .header .header-contents-active {
+        display: flex;
+        justify-content: flex-end;
     }
-
+  
     ul {
         display: flex;
         order: 1;
@@ -164,24 +117,45 @@
         align-items: flex-end;
         justify-content: flex-start;
     }
-
-    p, h2, ul {
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 0;
-    }
-
-    
-    .toggle-button {
-        top: .75rem;
-        right: 1rem;
-        display: none;
-        flex-direction: column;
+  
+      ul li a {
+          position: relative;
+          text-decoration: none;
+          line-height: 1em;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: transparent;
+          -webkit-text-stroke: 0.1px rgba(216, 216, 231, 0.8);
+      }
+  
+      ul li a::before {
+          content: attr(data-text);
+          position: absolute;
+          color: #D8D8E7;
+          width: 0;
+          overflow: hidden;
+          transition: 0.5s;
+          border-right: 0px solid var(--clr);
+          -webkit-text-stroke: 0.1px var(--clr);
+      }
+  
+      ul li a:hover::before {
+          width: 100%;
+          filter: drop-shadow(0 0 25px var(--clr));
+      }
+  
+    .header {
+        top: 0rem;
+        display: flex;
+        position: sticky;
+        transition: all 0.3s;
+        align-items: center;
+        width: 100%;
+        padding: 10px 30px 10px 30px;
+        align-self: stretch;
         justify-content: space-between;
-        width: 30px;
-        height: 21px;
+        z-index: 999;
+        transform: translate3d(0, 0, 1000px);
     }
 
     .toggle-button .bar {
@@ -191,7 +165,20 @@
         border-radius: 10px;
     }
 
-    @media (max-width: 600px) {
+        .toggle-button {
+        top: .75rem;
+        right: 1rem;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        padding: 0px;
+        background: none;
+        border: none;
+    }
+
+    @media (max-width: 1000px) {
         .toggle-button {
             display: flex;
         }
@@ -202,8 +189,8 @@
         }
 
         .header {
-            flex-direction: column;
             align-items: flex-start;
+            z-index: 999;
         }
 
         .header-contents ul {
@@ -215,6 +202,93 @@
         .header-contents li {
             text-align: center;
         }
+
+        .header {
+            display: flex;
+            z-index: 999;
+
+        }
+
+        .header ul {
+            flex-direction: column;
+            align-items: center;
+            flex-direction: center;
+            display: flex;
+            padding: 0px;
+        }
+
+        .header .header-contents {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        flex-direction: center;
     }
-    
+
+    .header ul {
+        flex-direction: column;
+        align-items: center;
+        flex-direction: center;
+        display: flex;
+        padding: 0px;
+    }
+
+    .header .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .header .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+    .header-contents-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        padding: none;
+        width: 100%;
+    }
+    ul {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .header {
+        z-index: 999;
+    }
+
+        .toggle-button {
+            cursor: pointer;
+        }
+
+        
+    .header .header-contents-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-wrapper {
+        z-index: 999;
+    }
+}
 </style>
