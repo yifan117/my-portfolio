@@ -10,14 +10,6 @@
         { content: "Contact", link: "../contact-me"}
     ];
 
-    let stickToTop = true;
-
-    let isStuck = false;
-
-    function handleStuck(e) {
-        isStuck = e.detail.isStuck;
-    }
-
     let resources = [
     
         {
@@ -80,6 +72,14 @@
     
         return descNum;
     }
+
+    let toggleCount = 0;
+
+$: toggleCountd = toggleCount % 2;
+
+function toggleBurger() {
+    toggleCount += 1;
+}
     
     </script>
 
@@ -88,17 +88,11 @@
     <title>Our Projects</title>
     
     <body>
-
-    {#if !stickToTop}
-    <slot />
-    {/if}
-
     
     <div 
-    class="header" 
-    class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
-    use:sticky={{ stickToTop }}
-    on:stuck={handleStuck}>
+    class="header">
+
+    <div class="logo-wrapper">
 
         <Saos
         animation={'vibrate-1 0.3s linear infinite both'}>
@@ -107,19 +101,31 @@
             </div>
         </Saos>
 
-        <a href="#" class="toggle-button">
+        <button class="toggle-button" on:click={toggleBurger}>
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </a>
+        </button>
 
-        <div class="header-contents">
-            <ul>
-                {#each headerContents as headerContent}
-                <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
-                {/each}
-            </ul>
-        </div>
+    </div>
+
+    {#if (toggleCountd === 0)}
+            <div class="header-contents">
+                <ul>
+                    {#each headerContents as headerContent}
+                    <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
+                    {/each}
+                </ul>
+            </div>
+            {:else}
+            <div class="header-contents-active">
+                <ul>
+                    {#each headerContents as headerContent}
+                    <li style="--clr:#D8D8E7"><a href="{headerContent.link}" data-text="{headerContent.content}">{headerContent.content}</a></li>
+                    {/each}
+                </ul>
+            </div>
+            {/if}
     </div>
 
         <div class="cards-container">
@@ -138,11 +144,6 @@
             </div>
             {/each}
         </div>
-
-        
-    {#if stickToTop}
-    <slot />
-    {/if}
 
     </body>
     
@@ -315,19 +316,6 @@
         align-items: flex-start;
     }
 
-    .header {
-        display: flex;
-        position: sticky;
-        transition: all 0.3s;
-        align-items: center;
-        align-self: stretch;
-        width: 100%;
-        justify-content: space-between;
-        gap: 200px;
-        z-index: 999;
-        transform: translate3d(0, 0, 1000px);
-    }
-
     a, li, ul {
         text-decoration: none;
         list-style: none;
@@ -345,17 +333,6 @@
         align-items: flex-start;
     }
   
-    .header {
-        display: flex;
-        position: sticky;
-        transition: all 0.3s;
-        align-items: center;
-        align-self: stretch;
-        width: 100%;
-        gap: 200px;
-        z-index: 999;
-    }
-  
     .header-contents {
       display: flex;
       width: 100%;
@@ -363,47 +340,22 @@
       justify-content: center;
     }
   
-    .header[data-position='top'] .header-contents {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .header[data-position='top'] ul {
+    .header ul {
       display: flex;
       align-items: center;
       width: 100%;
       justify-content: flex-end;
       gap: 100px;
     }
-  
-    .header.isStuck ul {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      justify-content: flex-end;
-      gap: 100px;
-    }
-  
-    .header.isStuck .header-contents {
+
+    .header .header-contents {
       display: flex;
       justify-content: flex-end;
     }
-  
-  
-    .header[data-position='bottom'] {
-        bottom: 1rem;
-    }
-  
-    .header.isStuck {
-        background: rgba(55, 55, 55, 1);
-        z-index: 999;
-        font-size: 1em;
-        flex-direction: row;
-        height: 40%;
-        justify-content: space-between;
-        padding: 10px 30px 10px 30px;
+
+    .header .header-contents-active {
+        display: flex;
+        justify-content: flex-end;
     }
   
     ul {
@@ -442,7 +394,7 @@
           filter: drop-shadow(0 0 25px var(--clr));
       }
   
-    .header[data-position='top'] {
+    .header {
         top: 0rem;
         display: flex;
         position: sticky;
@@ -451,7 +403,9 @@
         width: 100%;
         padding: 10px 30px 10px 30px;
         align-self: stretch;
+        justify-content: space-between;
         z-index: 999;
+        transform: translate3d(0, 0, 1000px);
     }
 
     .toggle-button {
@@ -462,6 +416,9 @@
         justify-content: space-between;
         width: 30px;
         height: 21px;
+        padding: 0px;
+        background: none;
+        border: none;
     }
 
     .toggle-button .bar {
@@ -470,4 +427,118 @@
         background-color: #D8D8E7;
         border-radius: 10px;
     }
+
+    @media (max-width: 1000px) {
+        .toggle-button {
+            display: flex;
+        }
+
+        .header-contents {
+            width: 100%;
+            display: none;
+        }
+
+        .header {
+            align-items: flex-start;
+            z-index: 999;
+        }
+
+        .header-contents ul {
+            width: 100%;
+            flex-direction: column;
+        }
+        
+
+        .header-contents li {
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            z-index: 999;
+
+        }
+
+        .header ul {
+            flex-direction: column;
+            align-items: center;
+            flex-direction: center;
+            display: flex;
+            padding: 0px;
+        }
+
+        .header .header-contents {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        flex-direction: center;
+    }
+
+    .header ul {
+        flex-direction: column;
+        align-items: center;
+        flex-direction: center;
+        display: flex;
+        padding: 0px;
+    }
+
+    .header .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .header .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+    .header-contents-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        padding: none;
+        width: 100%;
+    }
+    ul {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .header {
+        z-index: 999;
+    }
+
+        .toggle-button {
+            cursor: pointer;
+        }
+
+        
+    .header .header-contents-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-wrapper {
+        z-index: 999;
+    }
+}
     </style>
