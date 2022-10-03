@@ -127,9 +127,9 @@ function toggleBurger() {
             display: flex;
             flex-direction: column;
             height: 100%;
-            gap: 20px;
+            gap: 40px;
             align-items: center;
-            width: 100%;
+            width: 90%;
         }
     
         .card-wrapper {
@@ -140,6 +140,7 @@ function toggleBurger() {
             gap: 30px;
             width: 90%;
             max-height: 256px;
+            width: 100%;
             
         }
     
