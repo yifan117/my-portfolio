@@ -95,7 +95,7 @@
         <div class="card">
             <h3>Message Me!</h3>
             <form action="https://api.staticforms.xyz/submit" method="post">
-                <input type="hidden" name="accessKey" value="8581ff2d-58f0-4a2b-b135-b16e58a44d1c"> <!-- Required -->
+                <input type="hidden" name="accessKey" value="1abfbd67-ce48-4632-9b7e-432d080c688a"> <!-- Required -->
 
                 <div class="wrapper">
                     <div class="inputBox">
@@ -309,6 +309,7 @@
         justify-content: space-between;
         gap: 200px;
         z-index: 999;
+        transform: translate3d(0, 0, 1000px);
     }
 
     a, li, ul {

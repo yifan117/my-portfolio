@@ -325,6 +325,7 @@
         justify-content: space-between;
         gap: 200px;
         z-index: 999;
+        transform: translate3d(0, 0, 1000px);
     }
 
     a, li, ul {
