@@ -63,12 +63,18 @@
     
     <div class="logo-wrapper">
 
+        {#if isStuck === false}
         <Saos
         animation={'vibrate-1 0.3s linear infinite both'}>
             <div class="logo">
                 [yifan]
             </div>
         </Saos>
+        {:else}
+        <div class="logo">
+            [yifan]
+        </div>
+        {/if}
 
         <button class="toggle-button" on:click={toggleBurger}>
             <span class="bar"></span>
@@ -402,7 +408,7 @@
           color: #D8D8E7;
           width: 0;
           overflow: hidden;
-          transition: 1s;
+          transition: 0.5s;
           border-right: 0px solid var(--clr);
           -webkit-text-stroke: 0.1px var(--clr);
       }
