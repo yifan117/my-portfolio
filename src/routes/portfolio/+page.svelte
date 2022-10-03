@@ -1,6 +1,7 @@
 <script lang='ts'>
 
-    import Nav from "../lib/nav-bar.svelte";
+    import BackToTop from "../lib/BackToTop.svelte";
+import Nav from "../lib/nav-bar.svelte";
 
     let resources = [
     
@@ -100,6 +101,7 @@ function toggleBurger() {
             {/each}
         </div>
 
+        <BackToTop/>
     </body>
     
     <style>

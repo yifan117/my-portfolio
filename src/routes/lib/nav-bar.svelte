@@ -3,7 +3,7 @@
         { content: "Home", link: "../"},
         { content: "Portfolio", link: "../portfolio"},
         { content: "Hire", link: "../hire"},
-        { content: "Contact"}
+        { content: "Contact", link: "../contact-me"}
     ];
 
         let toggleCount = 0;
