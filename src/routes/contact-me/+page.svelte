@@ -1,5 +1,4 @@
 <script lang="ts">
-    import sticky from '../sticky.js';
     import Saos from "saos";
 
     let headerContents = [
@@ -8,14 +7,6 @@
         { content: "Hire", link: "../hire"},
         { content: "Contact"}
     ];
-
-    let stickToTop = true;
-
-    let isStuck = false;
-
-    function handleStuck(e) {
-        isStuck = e.detail.isStuck;
-    }
 
         let toggleCount = 0;
 
@@ -30,23 +21,14 @@
     
 <body>
 
-    {#if !stickToTop}
-    <slot />
-    {/if}
-
     <div 
-    class="header" 
-    class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
-    use:sticky={{ stickToTop }}>
+    class="header">
 
     <div class="logo-wrapper">
 
-        <Saos
-        animation={'vibrate-1 0.3s linear infinite both'}>
             <div class="logo">
                 [yifan]
             </div>
-        </Saos>
 
         <button class="toggle-button" on:click={toggleBurger}>
             <span class="bar"></span>
@@ -118,10 +100,6 @@
             </form>
         </div>
     </div>
-
-    {#if stickToTop}
-    <slot />
-    {/if}
 </body>
 
 <style>
@@ -131,33 +109,6 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-    }
-
-@keyframes -global-vibrate-1 {
-        0% {
-            -webkit-transform: translate(0);
-                    transform: translate(0);
-        }
-        20% {
-            -webkit-transform: translate(-2px, 2px);
-                    transform: translate(-2px, 2px);
-        }
-        40% {
-            -webkit-transform: translate(-2px, -2px);
-                    transform: translate(-2px, -2px);
-        }
-        60% {
-            -webkit-transform: translate(2px, 2px);
-                    transform: translate(2px, 2px);
-        }
-        80% {
-            -webkit-transform: translate(2px, -2px);
-                    transform: translate(2px, -2px);
-        }
-        100% {
-            -webkit-transform: translate(0);
-                    transform: translate(0);
-        }
     }
 
     body {
@@ -298,19 +249,6 @@
         align-items: flex-start;
     }
 
-    .header {
-        display: flex;
-        position: sticky;
-        transition: all 0.3s;
-        align-items: center;
-        align-self: stretch;
-        width: 100%;
-        justify-content: space-between;
-        gap: 200px;
-        z-index: 999;
-        transform: translate3d(0, 0, 1000px);
-    }
-
     a, li, ul {
         text-decoration: none;
         list-style: none;
@@ -328,17 +266,6 @@
         align-items: flex-start;
     }
   
-    .header {
-        display: flex;
-        position: sticky;
-        transition: all 0.3s;
-        align-items: center;
-        align-self: stretch;
-        width: 100%;
-        gap: 200px;
-        z-index: 999;
-    }
-  
     .header-contents {
       display: flex;
       width: 100%;
@@ -346,47 +273,22 @@
       justify-content: center;
     }
   
-    .header[data-position='top'] .header-contents {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .header[data-position='top'] ul {
+    .header ul {
       display: flex;
       align-items: center;
       width: 100%;
       justify-content: flex-end;
       gap: 100px;
     }
-  
-    .header.isStuck ul {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      justify-content: flex-end;
-      gap: 100px;
-    }
-  
-    .header.isStuck .header-contents {
+
+    .header .header-contents {
       display: flex;
       justify-content: flex-end;
     }
-  
-  
-    .header[data-position='bottom'] {
-        bottom: 1rem;
-    }
-  
-    .header.isStuck {
-        background: rgba(55, 55, 55, 1);
-        z-index: 999;
-        font-size: 1em;
-        flex-direction: row;
-        height: 40%;
-        justify-content: space-between;
-        padding: 10px 30px 10px 30px;
+
+    .header .header-contents-active {
+        display: flex;
+        justify-content: flex-end;
     }
   
     ul {
@@ -415,7 +317,7 @@
           color: #D8D8E7;
           width: 0;
           overflow: hidden;
-          transition: 1s;
+          transition: 0.5s;
           border-right: 0px solid var(--clr);
           -webkit-text-stroke: 0.1px var(--clr);
       }
@@ -425,7 +327,7 @@
           filter: drop-shadow(0 0 25px var(--clr));
       }
   
-    .header[data-position='top'] {
+    .header {
         top: 0rem;
         display: flex;
         position: sticky;
@@ -434,17 +336,9 @@
         width: 100%;
         padding: 10px 30px 10px 30px;
         align-self: stretch;
-        z-index: 999;
-    }
-
-    .toggle-button {
-        top: .75rem;
-        right: 1rem;
-        display: none;
-        flex-direction: column;
         justify-content: space-between;
-        width: 30px;
-        height: 21px;
+        z-index: 999;
+        transform: translate3d(0, 0, 1000px);
     }
 
     .toggle-button .bar {
@@ -479,6 +373,7 @@
 
         .header {
             align-items: flex-start;
+            z-index: 999;
         }
 
         .header-contents ul {
@@ -491,15 +386,13 @@
             text-align: center;
         }
 
-        .container {
-            flex-direction: column;
-        }
-
-        .header.isStuck {
+        .header {
             display: flex;
+            z-index: 999;
+
         }
 
-        .header.isStuck ul {
+        .header ul {
             flex-direction: column;
             align-items: center;
             flex-direction: center;
@@ -507,14 +400,14 @@
             padding: 0px;
         }
 
-        .header[data-position='top'] .header-contents {
+        .header .header-contents {
             display: none;
             flex-direction: column;
             align-items: center;
         flex-direction: center;
     }
 
-    .header[data-position='top'] ul {
+    .header ul {
         flex-direction: column;
         align-items: center;
         flex-direction: center;
@@ -522,7 +415,7 @@
         padding: 0px;
     }
 
-    .header[data-position='top'] .logo-wrapper {
+    .header .logo-wrapper {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -530,12 +423,12 @@
         width: 100%;
     }
 
-    .header[data-position='top'] {
+    .header {
         flex-direction: column;
         gap: 30px;
     }
 
-    .header.isStuck .logo-wrapper {
+    .header .logo-wrapper {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -543,7 +436,7 @@
         width: 100%;
     }
 
-    .header.isStuck {
+    .header {
         display: flex;
         flex-direction: column;
         z-index: 999;
@@ -571,10 +464,18 @@
         }
 
         
-    .header[data-position='top'] .header-contents-active {
+    .header .header-contents-active {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .logo-wrapper {
+        z-index: 999;
+    }
+
+    .container {
+        flex-direction: column;
     }
 }
 </style>

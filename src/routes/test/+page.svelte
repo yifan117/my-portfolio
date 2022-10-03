@@ -1,80 +1,34 @@
 <script lang="ts">
-    
-    import CommunitySphere from "../lib/CommunityEngagementSphere.svelte";
-    import BackToTop from "../lib/BackToTop.svelte";
-    import sticky from '../sticky.js';
-  
-    import CubeAnimation from "../lib/cubeAnimation.svelte";
-  
     import Saos from "saos";
 
-    function handleObserver(x: CustomEvent<any>) {
-    console.info(x.detail.observing);
-  }
-  
     let headerContents = [
-        { content: "Home"},
-        { content: "Portfolio", link: "./portfolio"},
-        { content: "Hire", link: "./hire"},
-        { content: "Contact", link: "./contact-me"}
+        { content: "Home", link: "../"},
+        { content: "Portfolio", link: "../portfolio"},
+        { content: "Hire", link: "../hire"},
+        { content: "Contact"}
     ];
-  
-    let skills = [
-        { text: "Svelte | HTML + CSS", level: "80", color: "#FF5D5D"},
-        { text: "JavaScript | TypeScript", level: "60", color: "#CC5CDE"},
-        { text: "C++", level: "80", color: "#80C07A"},
-        { text: "Rust", level: "20", color: "#D06E61"}
-    ];
-  
-    let stickToTop = true;
-  
-    let isStuck = false;
-  
-    function handleStuck(e) {
-        isStuck = e.detail.isStuck;
-    }
 
-    let toggleCount = 0;
+        let toggleCount = 0;
 
     $: toggleCountd = toggleCount % 2;
 
     function toggleBurger() {
         toggleCount += 1;
     }
+</script>
 
-  </script>
-  
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
-  
-  <body>
-  
-    {#if !stickToTop}
-    <slot />
-    {/if}
-  
-        <div 
-        class="header" 
-        class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
-        use:sticky={{ stickToTop }}
-        on:stuck={handleStuck}>
-  
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     
+<body>
+
+    <div 
+    class="header">
+
     <div class="logo-wrapper">
 
-        {#if isStuck === false}
-        <Saos
-        animation={'vibrate-1 0.3s linear infinite both'}>
             <div class="logo">
                 [yifan]
             </div>
-        </Saos>
-        {:else}
-        <div class="logo">
-            [yifan]
-        </div>
-        {/if}
 
         <button class="toggle-button" on:click={toggleBurger}>
             <span class="bar"></span>
@@ -101,204 +55,192 @@
                 </ul>
             </div>
             {/if}
-        </div>
-        <BackToTop/>
-  
-        <section></section>
-  
-        <Saos
-        animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>
-        <div class="hi-container">
-                    <div class="hi" style="align-self: flex-end;">
-                        <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span></div>
-  
-                        <div class="occupation">
-                            Full-Stack Developer | Student
-                        </div>
-                    </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h3>Sign Up To Hear About New Projects</h3>
+            <form action="https://api.staticforms.xyz/submit" method="post">
+                <input type="hidden" name="accessKey" value="1abfbd67-ce48-4632-9b7e-432d080c688a"> <!-- Required -->
+            <div class="wrapper">
+                <div class="inputBox">
+                    <input type="text" name="email" required>
+                    <span>Email</span>
                 </div>
-  
-                <CubeAnimation/>
-        </Saos>
-  
-        <Saos animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>           
-            <section style="padding: 100px 0px 0px 0px">
-                <div class="about-me">
-                    <div class="text">
-                        I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
-                        <br><br>
-                        I have experience in Svelte, Rust, HTML, CSS, JavaScript, TypeScript and C++.
-                    </div>
+
+                <input type="hidden" name="redirectTo" value="https://www.yifan-lu.com"> <!-- Optional -->
+                <input type="submit" value="Submit"/>
             </div>
-        </section>
-    </Saos>
-            
-        <section>
-            <Saos animation={'swing-in-top-fwd 2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both'}>           
-                <div class="container" style="justify-content: center">
-                    <div class="skills-container">
-                        <h2>Skills</h2>
-                        <div class="level-container">
-                            <div class="skill">
-                                {#each skills as skill}
-                                    <Saos animation={'fade-in-left 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.1s both'}>           
-                                        <p class="skill-text">{skill.text}</p>
-                                        <div class="skill-bar-container" style="width: 100%;">
-                                            <div class="skill-bar" style="width: {skill.level}%; background: {skill.color}; flex-grow: 0; order: 0; align-items: flex-start"></div>
-                                            <div class="skill-bar-filler" style="background: rgba(216, 216, 231, 0.1); flex-grow: 1; order: 1; align-items: flex-end"></div>
-                                        </div>
-                                    </Saos>
-                                {/each}
-                            </div>
-                        </div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>Message Me!</h3>
+            <form action="https://api.staticforms.xyz/submit" method="post">
+                <input type="hidden" name="accessKey" value="1abfbd67-ce48-4632-9b7e-432d080c688a"> <!-- Required -->
+
+                <div class="wrapper">
+                    <div class="inputBox">
+                        <input type="text" name="name" required> <!-- Optional -->
+                        <span>Name</span>
                     </div>
+            <div class="inputBox">
+                    <input type="text" name="email" required>
+                    <span>Email</span>
                 </div>
-            </Saos>
-        </section>
-  
-        <!-- <section>
-            <Saos
-            animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>
-                <h2>Community Engagement</h2>
-            </Saos>
-                <CommunitySphere/>
-        </section> -->
-  
-    {#if stickToTop}
-    <slot />
-    {/if}
-  
-  </body>
-  
-  <style>
-  
-    @keyframes -global-fade-in-left {
-        0% {
-            -webkit-transform: translateX(-50px);
-                    transform: translateX(-50px);
-            opacity: 0;
-        }
-        100% {
-            -webkit-transform: translateX(0);
-                    transform: translateX(0);
-            opacity: 1;
-        }
+                <div class="inputBox">
+                    <textarea name="message" placeholder="Enter your message here..."></textarea> <!-- Optional -->
+            </div>
+
+
+                <input type="hidden" name="redirectTo" value="https://www.yifan-lu.com"> <!-- Optional -->
+                <input type="submit" value="Submit"/>
+
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<style>
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
-  
-    @keyframes -global-scale-in-center {
-        0% {
-            transform: scale(0);
-            opacity: 1;
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-      }
+
+    body {
+        display: flex;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        flex-direction: column;
+        align-items: center;
+        background: #1D1D1D;
+        margin-bottom: 1rem;
+        align-self: stretch;
     }
-  
-    @keyframes -global-focus-in-contract-bck {
-        0% {
-            letter-spacing: 1em;
-            -webkit-transform: translateZ(300px);
-                    transform: translateZ(300px);
-            -webkit-filter: blur(12px);
-                    filter: blur(12px);
-            opacity: 0;
-        }
-        100% {
-            -webkit-transform: translateZ(12px);
-                    transform: translateZ(12px);
-            -webkit-filter: blur(0);
-                    filter: blur(0);
-            opacity: 1;
-        }
-    }
-  
-    @keyframes -global-swing-in-top-fwd {
-        0% {
-            -webkit-transform: rotateX(-100deg);
-                    transform: rotateX(-100deg);
-            -webkit-transform-origin: top;
-                    transform-origin: top;
-            opacity: 0;
-        }
-        100% {
-            -webkit-transform: rotateX(0deg);
-                    transform: rotateX(0deg);
-            -webkit-transform-origin: top;
-                    transform-origin: top;
-            opacity: 1;
-        }
-    }
-  
-    @keyframes -global-vibrate-1 {
-        0% {
-            -webkit-transform: translate(0);
-                    transform: translate(0);
-        }
-        20% {
-            -webkit-transform: translate(-2px, 2px);
-                    transform: translate(-2px, 2px);
-        }
-        40% {
-            -webkit-transform: translate(-2px, -2px);
-                    transform: translate(-2px, -2px);
-        }
-        60% {
-            -webkit-transform: translate(2px, 2px);
-                    transform: translate(2px, 2px);
-        }
-        80% {
-            -webkit-transform: translate(2px, -2px);
-                    transform: translate(2px, -2px);
-        }
-        100% {
-            -webkit-transform: translate(0);
-                    transform: translate(0);
-        }
-    }
-  
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: stretch;
+        width: 100%;
+        gap: 50px;
+}
+
     * {
         color: #D8D8E7;
         font-family: 'Prompt';
         box-sizing: border-box;
         text-size-adjust: auto;
+    }        
+    
+    h3 {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        -webkit-text-stroke: 1px #D8D8E7;
+        text-align: center;
     }
-  
-    .container {
-        gap: 220px;
+    
+    span {
+        color: #D8D8E7;
+    }
+    
+    .card {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        align-self: stretch;
-        width: 100%;
-  }
-  
-    section {
-        display: grid;
-        align-self: stretch;
-        min-height: 100vh;
-        width: 100%;
-    }
-  
-    a, li, ul {
-        text-decoration: none;
-        list-style: none;
-        display: flex;
+        padding: 150px;
+        flex-direction: column;
+        width: 40%;
+        height: 70%;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 16px;
+        gap: 10px;
     }
 
-    li {
-        cursor: pointer;
+    .inputBox {
+        position: relative;
+        min-width: 250px;
+        margin-bottom: 8px;
+        color: #D8D8E7;
     }
-  
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    
+    .inputBox input, textarea {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+        border: none;
+        color: #D8D8E7;
+        font-size: 1em;
+        background: transparent;
+        border-left: 2px solid #1D1D1D;
+        border-bottom: 2px solid #1D1D1D;
+        transition: 0.1s;
+    }
+    
+    .inputBox input:focus, textarea:focus {
+        border: 2px solid #1D1D1D;
+        transition: 1s;
+    }
+    
+    .inputBox input:valid~span,
+    .inputBox input:focus~span {
+        transform: translateX(160px) translateY(-18px);
+        font-size: 0.8em;
+        padding: 5px 10px;
         background: #1D1D1D;
-        margin-bottom: 1rem;
+        letter-spacing: 0.2em;
+        color: #D8D8E7;
+        border: 2px;
     }
-  
+    
+    .inputBox input:valid,
+    .inputBox input:focus {
+        border: 2px solid #1D1D1D;
+    }
+    
+    input[type=submit] {
+        height: 45px;
+        width: 100px;
+        border-radius: 5px;
+        border: 2px solid #000;
+        cursor: pointer;
+        background-color: transparent;
+        transition: 0.5s;
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 2px;
+        font-weight: 700
+    }
+    
+    input[type=submit]:hover {
+        background-color: #000;
+        color: D8D8E7;
+    }
+    
+    .inputBox span {
+        margin-top: 5px;
+        position: absolute;
+        left: 0;
+        transform: translateY(-4px);
+        margin-left: 10px;
+        padding: 10px;
+        pointer-events: none;
+        font-size: 12px;
+        color: #D8D8E7;
+        text-transform: uppercase;
+        transition: 0.5s;
+        letter-spacing: 3px;
+    }
+
+    
     .logo {
         order: 0;
         display: flex;
@@ -306,17 +248,22 @@
         font-weight: 700;
         align-items: flex-start;
     }
-  
-    .header {
+
+    a, li, ul {
+        text-decoration: none;
+        list-style: none;
         display: flex;
-        position: sticky;
-        transition: all 0.3s;
-        align-items: center;
-        align-self: stretch;
-        width: 100%;
-        gap: 200px;
-        z-index: 999;
-        transform: translate3d(0, 0, 1000px);
+    }
+    
+    li {
+        cursor: pointer;
+    }
+    .logo {
+        order: 0;
+        display: flex;
+        font-size: 3em;
+        font-weight: 700;
+        align-items: flex-start;
     }
   
     .header-contents {
@@ -326,60 +273,22 @@
       justify-content: center;
     }
   
-    .header[data-position='top'] .header-contents {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .header[data-position='top'] ul {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      justify-content: space-around;
-    }
-  
-    .header.isStuck ul {
+    .header ul {
       display: flex;
       align-items: center;
       width: 100%;
       justify-content: flex-end;
       gap: 100px;
     }
-  
-    .header.isStuck .header-contents {
+
+    .header .header-contents {
       display: flex;
       justify-content: flex-end;
     }
-  
-    .header[data-position='top'] {
-        top: 0rem;
+
+    .header .header-contents-active {
         display: flex;
-        flex-direction: column;
-        position: sticky;
-        font-size: 1.6em;
-        transition: all 0.3s;
-        align-items: center;
-        width: 100%;
-        padding: 100px;
-        height: 100vh;
-        align-self: stretch;
-        z-index: 999;
-    }
-  
-    .header[data-position='bottom'] {
-        bottom: 1rem;
-    }
-  
-    .header.isStuck {
-        background: rgba(55, 55, 55, 1);
-        z-index: 999;
-        font-size: 1em;
-        flex-direction: row;
-        height: 40%;
-        justify-content: space-between;
-        padding: 10px 30px 10px 30px;
+        justify-content: flex-end;
     }
   
     ul {
@@ -418,93 +327,28 @@
           filter: drop-shadow(0 0 25px var(--clr));
       }
   
-    .about-me {
+    .header {
+        top: 0rem;
         display: flex;
-        font-weight: 600;
-        font-size: 1.5em;
-        padding: 20px;
+        position: sticky;
+        transition: all 0.3s;
         align-items: center;
-        text-align: center;
-  
-    }
-  
-    .occupation {
-        display: flex;
-        align-self: stretch;
-        align-items: center;
-        justify-content: center;
-    }
-  
-    .hi {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-  
-    .hi-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 80%;
-    }
-  
-    .hi-text {
-        font-size: 6em;
-        font-weight: 600;
-        text-align: center;
-    }
-  
-    p, h2, ul {
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        padding-inline-start: 0;
-    }
-  
-    .occupation {
-        opacity: 30%;
-    }
-  
-    .skills-container {
-        display: flex;
-        flex-direction: column;
-        padding: 20px 30px 20px 30px;
-        align-items: center;
-        align-self: stretch;
         width: 100%;
+        padding: 10px 30px 10px 30px;
+        align-self: stretch;
+        justify-content: space-between;
+        z-index: 999;
+        transform: translate3d(0, 0, 1000px);
     }
-  
-    .level-container {
-        width: 60%;
-        display: flex;
-    }
-  
-    .skill {
-        display: flex;
-        flex-direction: column;
+
+    .toggle-button .bar {
+        height: 3px;
         width: 100%;
-        gap: 10px;
+        background-color: #D8D8E7;
+        border-radius: 10px;
     }
-  
-    .skill-bar, .skill-bar-filler {
-        height: 10px;
-        border-radius: 20px;
-    }
-  
-    h2 {
-        display: flex;
-        justify-content: center;
-        font-size: 2.5em;
-        font-weight: 600;
-    }
-  
-    .skill-bar-container {
-        display: flex;
-    }
-  
-    .toggle-button {
+
+        .toggle-button {
         top: .75rem;
         right: 1rem;
         display: none;
@@ -516,86 +360,122 @@
         background: none;
         border: none;
     }
-  
-    .toggle-button .bar {
-        height: 3px;
-        width: 100%;
-        background-color: #D8D8E7;
-        border-radius: 10px;
-    }
-  
+
     @media (max-width: 1000px) {
-  
-        .header {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-  
-        .header[data-position='top'] .header-contents {
+        .toggle-button {
             display: flex;
-            align-items: center;
-            justify-content: center;
         }
+
+        .header-contents {
+            width: 100%;
+            display: none;
+        }
+
+        .header {
+            align-items: flex-start;
+            z-index: 999;
+        }
+
+        .header-contents ul {
+            width: 100%;
+            flex-direction: column;
+        }
+        
+
+        .header-contents li {
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            z-index: 999;
+
+        }
+
+        .header ul {
+            flex-direction: column;
+            align-items: center;
+            flex-direction: center;
+            display: flex;
+            padding: 0px;
+        }
+
+        .header .header-contents {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        flex-direction: center;
+    }
+
+    .header ul {
+        flex-direction: column;
+        align-items: center;
+        flex-direction: center;
+        display: flex;
+        padding: 0px;
+    }
+
+    .header .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .header .logo-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+    .header-contents-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        padding: none;
+        width: 100%;
+    }
+    ul {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .header {
+        z-index: 999;
+    }
 
         .toggle-button {
             cursor: pointer;
         }
 
-        .header[data-position='top'] .logo {
-            font-size: 1.4em;
-        }
-
-        .header[data-position='top'] .toggle-button {
-            display: none;
-        }
-
-        .header[data-position='top'] .header-contents ul {
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
         
-  
-        .header[data-position='top'] .header-contents li {
-            text-align: center;
-            width: 100%;
-            font-size: 0.6em;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header.isStuck .toggle-button {
-            display: flex;
-        }
-
-        .header.isStuck .logo-wrapper {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header.isStuck {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .header.isStuck .header-contents {
-            display: none;
-        }
-
-        .header-contents-active {
-            display: flex;
-            flex-direction: column;
-            height: 20%;
-        }
-
-        .header-contents-active ul {
-            flex-direction: column;
-        }
-
+    .header .header-contents-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    
-  </style>
+
+    .logo-wrapper {
+        z-index: 999;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+}
+</style>
