@@ -19,9 +19,9 @@ class="header">
 
 <div class="logo-wrapper">
 
-        <div class="logo">
+        <a class="logo" href="../">
             [yifan]
-        </div>
+        </a>
 
     <button class="toggle-button" on:click={toggleBurger}>
         <span class="bar"></span>
