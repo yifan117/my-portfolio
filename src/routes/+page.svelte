@@ -310,6 +310,7 @@
         width: 100%;
         gap: 200px;
         z-index: 999;
+        transform: translate3d(0, 0, 1000px);
     }
   
     .header-contents {
