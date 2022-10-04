@@ -1,6 +1,5 @@
 <script lang="ts">
     
-    import CommunitySphere from "./lib/CommunityEngagementSphere.svelte";
     import BackToTop from "./lib/BackToTop.svelte";
     import sticky from './sticky.js';
   
