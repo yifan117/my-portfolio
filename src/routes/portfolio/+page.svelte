@@ -121,6 +121,7 @@ function toggleBurger() {
             margin-bottom: 0rem;
             position: absolute;
             left: 0;
+            min-height: 100vh;
             right: 0;
             padding: 0px 0px 50px 0px;
         }
@@ -191,11 +192,11 @@ function toggleBurger() {
             transform: scale(1.05) translateZ(0);
         }
     
-        .cards-container:hover>.card-wrapper:not(:hover) .card-background {
+        .cards-container:has(.card-wrapper:hover) .card-wrapper:not(:hover) .card-background {
             filter: brightness(0.5) contrast(1.4) blur(30px);
         }
     
-        .cards-container:hover>.card-wrapper:not(:hover) .description-content {
+        .cards-container:has(.card-wrapper:hover) .card-wrapper:not(:hover) .description-content {
             filter: brightness(0.5) contrast(1.4) blur(30px);
         }
     
@@ -232,7 +233,7 @@ function toggleBurger() {
             padding: 10px;
         }
     
-        .cards-container:hover>.card-wrapper:not(:hover) p {
+        .cards-container:has(.card-wrapper:hover) .card-wrapper:not(:hover) p {
             opacity: 0;
         }
 
