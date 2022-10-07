@@ -6,7 +6,7 @@ import Nav from "../lib/nav-bar.svelte";
     let resources = [
     
         {
-            link: 'https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model', 
+            link: '../lib/stopwatch', 
             styling: 'background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);', 
             name: 'Placeholder', 
             description: 'Lorem Ipsum'
