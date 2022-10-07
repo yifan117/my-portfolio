@@ -49,6 +49,8 @@
         savedMs = 0;
     }
     </script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     
     <div class="contents">
         <div class="textfield">
@@ -112,6 +114,10 @@
     
     
     <style>
+
+        * {
+            font-family: 'Prompt';
+        }
     
     .colon {
         font-weight: 1000;
@@ -131,7 +137,6 @@
         height: 100vh;
         width: 100vw;
         border-radius: 5px;
-        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
     
     .textfield {
@@ -139,7 +144,6 @@
         width: 100vw;
         display: flex;
         justify-content: space-around;
-        font-family: inherit;
     }
     
     .counter {
@@ -148,6 +152,7 @@
         align-items: center;
         justify-content: center;
         font-size: 20rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
     
     .timeUnit {
@@ -163,7 +168,7 @@
     
     small {
         display: flex;
-        font-size: large;
+        font-size: 0.1em;
         min-height: 40px;
         align-items: center;
     }
@@ -188,13 +193,13 @@
         align-content: center;
         justify-content: center;
         font-size: 3rem;
-        font-weight: 800;
-        font-family: inherit;
+        font-weight: 900;
         border: 10px;
     }
     
     button:hover {
         opacity: 50%;
         border-color: black;
+        cursor: pointer;
     }
     </style>

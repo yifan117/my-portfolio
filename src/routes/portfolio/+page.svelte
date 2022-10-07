@@ -8,8 +8,8 @@ import Nav from "../lib/nav-bar.svelte";
         {
             link: '../lib/stopwatch', 
             styling: 'background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);', 
-            name: 'Placeholder', 
-            description: 'Lorem Ipsum'
+            name: 'Simple Stopwatch', 
+            description: 'A simple stopwatch displaying minutes, seconds, and centiseconds.'
         },
     
         {
