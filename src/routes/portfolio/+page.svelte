@@ -78,7 +78,7 @@ function toggleBurger() {
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     
-    <title>Our Projects</title>
+    <title>My Projects</title>
     
     <body>
     
