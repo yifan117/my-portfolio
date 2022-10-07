@@ -1,5 +1,4 @@
 <script lang='ts'>
-    import Nav from '../nav-bar.svelte';
     import OtherStopwatchTandb from './OtherStopwatchTANDB.svelte';
     
     </script>
@@ -9,7 +8,6 @@
     <title>Yifan's Stopwatch</title>
     
     <div class="body">
-      <Nav/>
       <!-- <Textfield/>
       <Buttons/> -->
       <OtherStopwatchTandb/>
