@@ -147,7 +147,6 @@ class="header">
     .header {
         top: 0rem;
         display: flex;
-        position: sticky;
         transition: all 0.3s;
         align-items: center;
         width: 100%;
