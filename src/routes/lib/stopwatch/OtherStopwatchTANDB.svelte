@@ -202,4 +202,8 @@
         border-color: black;
         cursor: pointer;
     }
+
+    @media (max-width: 1500px) {
+        
+    }
     </style>
