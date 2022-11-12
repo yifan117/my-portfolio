@@ -3,10 +3,10 @@
 	import { element } from "svelte/internal";
 
     let gameArr = [
-        [2, 2, 2, 2],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]
+        [2, 0, 0, 0],
+        [2, 0, 0, 0],
+        [2, 0, 0, 0],
+        [2, 0, 0, 0]
     ]
 
     // iterate through array, find non zeros
@@ -93,13 +93,13 @@
         randomFill();
     }
 
-    function move() {
+    function move_up() {
 
         let temp_array: number[] = new Array();
 
         for (let i = 0; i < 4; i++) {
-            if (gameArr[0][i] != 0) {
-                temp_array.push(gameArr[0][i]);
+            if (gameArr[i][0] != 0) {
+                temp_array.push(gameArr[i][0]);
             }
         }
 
@@ -107,11 +107,55 @@
             temp_array.push(0);        }
 
         for (let i = 0; i < 4; i++) {
-            gameArr[0][i] = temp_array[i];
+            gameArr[i][0] = temp_array[i];
+        }
+        
+    }
+
+    function merge_up() {
+        for (let i = 0; i < 3; i++) {
+            if (gameArr[i][0] === gameArr[i+1][0]) {
+                gameArr[i][0] = gameArr[i][0] * 2;
+                gameArr[i+1][0] = 0; 
+            }
+        }
+
+        move_up();
+    }
+
+    function move_down() {
+
+        let temp_array: number[] = new Array();
+
+        for (let i = 0; i < 4; i++) {
+            if (gameArr[i][0] != 0) {
+                temp_array.push(gameArr[i][0]);
+            }
+        }
+
+        while (temp_array.length <= 3) {
+            temp_array.push(0);        }
+
+            temp_array.reverse();
+
+        for (let i = 0; i < 4; i++) {
+            gameArr[i][0] = temp_array[i];
         }
     }
 
-    function move_reverse() {
+    
+    function merge_down() {
+        for (let i = 3; i > 0; i--) {
+            if (gameArr[i][0] === gameArr[i-1][0]) {
+                gameArr[i][0] = gameArr[i][0] * 2;
+                gameArr[i-1][0] = 0; 
+            }
+        }
+
+        move_down();
+    }
+
+    function move_right() {
 
         let temp_array: number[] = new Array();
 
@@ -132,18 +176,8 @@
         }
     }
 
-    function merge() {
-        for (let i = 0; i < 3; i++) {
-            if (gameArr[0][i] === gameArr[0][i+1]) {
-                gameArr[0][i] = gameArr[0][i] * 2;
-                gameArr[0][i+1] = 0; 
-            }
-        }
-
-        move();
-    }
-
-    function merge_reverse() {
+    
+    function merge_right() {
         for (let i = 3; i > 0; i--) {
             if (gameArr[0][i] === gameArr[0][i-1]) {
                 gameArr[0][i] = gameArr[0][i] * 2;
@@ -151,34 +185,61 @@
             }
         }
 
-        move_reverse();
+        move_right();
+    }
+
+    function move_left() {
+
+        let temp_array: number[] = new Array();
+
+        for (let i = 0; i < 4; i++) {
+            if (gameArr[0][i] != 0) {
+                temp_array.push(gameArr[0][i]);
+            }
+        }
+
+        while (temp_array.length <= 3) {
+            temp_array.push(0);        }
+
+        for (let i = 0; i < 4; i++) {
+            gameArr[0][i] = temp_array[i];
+        }
+    }
+
+    function merge_left() {
+        for (let i = 0; i < 3; i++) {
+            if (gameArr[0][i] === gameArr[0][i+1]) {
+                gameArr[0][i] = gameArr[0][i] * 2;
+                gameArr[0][i+1] = 0; 
+            }
+        }
+
+        move_left();
     }
 
     function keyLeft() {
         console.log("left");
 
-        move();
-        merge();
+        move_left();
+        merge_left();
     }
 
-    // START WITH MOVING TO LEFTMOST
-
-    // if == and next to eachother, combine
-    // move to leftmost
-    // else 
-    // move to leftmost
     function keyRight() {
         console.log("right");
-        move_reverse();
-        merge_reverse();
+        move_right();
+        merge_right();
     }
 
     function keyUp() {
         console.log("up");
+        move_up();
+        merge_up();
     }
 
     function keyDown() {
         console.log("down");
+        move_down();
+        merge_down();
     }
 
 </script>
