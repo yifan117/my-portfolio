@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { element } from "svelte/internal";
 
     let gameArr = [
+        [2, 2, 2, 2],
         [2, 0, 0, 0],
-        [2, 0, 0, 0],
-        [2, 0, 0, 0],
+        [2, 2, 2, 2],
         [2, 0, 0, 0]
     ]
 
@@ -81,6 +80,10 @@
         }
     }
 
+    function check_loss() {
+        console.log("placeholder");
+    }
+
     function resetGame(): void {
 
         for (let i = 0; i < 4; i++) {
@@ -95,126 +98,145 @@
 
     function move_up() {
 
-        let temp_array: number[] = new Array();
+        for (let a = 0; a < 4; a++) {
 
-        for (let i = 0; i < 4; i++) {
-            if (gameArr[i][0] != 0) {
-                temp_array.push(gameArr[i][0]);
+            let temp_array: number[] = new Array();
+
+            for (let i = 0; i < 4; i++) {
+                if (gameArr[i][a] != 0) {
+                    temp_array.push(gameArr[i][a]);
+                }
+            }
+
+            while (temp_array.length <= 3) {
+                temp_array.push(0);        }
+
+            for (let i = 0; i < 4; i++) {
+                gameArr[i][a] = temp_array[i];
             }
         }
-
-        while (temp_array.length <= 3) {
-            temp_array.push(0);        }
-
-        for (let i = 0; i < 4; i++) {
-            gameArr[i][0] = temp_array[i];
-        }
-        
     }
 
     function merge_up() {
-        for (let i = 0; i < 3; i++) {
-            if (gameArr[i][0] === gameArr[i+1][0]) {
-                gameArr[i][0] = gameArr[i][0] * 2;
-                gameArr[i+1][0] = 0; 
+
+        for (let a = 0; a < 4; a++) {
+
+            for (let i = 0; i < 3; i++) {
+                if (gameArr[i][a] === gameArr[i+1][a]) {
+                    gameArr[i][a] = gameArr[i][a] * 2;
+                    gameArr[i+1][a] = 0; 
+                }
             }
         }
 
-        move_up();
     }
 
     function move_down() {
 
-        let temp_array: number[] = new Array();
+        for (let a = 0; a < 4; a++) {
 
-        for (let i = 0; i < 4; i++) {
-            if (gameArr[i][0] != 0) {
-                temp_array.push(gameArr[i][0]);
+            let temp_array: number[] = new Array();
+
+            for (let i = 0; i < 4; i++) {
+                if (gameArr[i][a] != 0) {
+                    temp_array.push(gameArr[i][a]);
+                }
             }
-        }
 
-        while (temp_array.length <= 3) {
-            temp_array.push(0);        }
+            while (temp_array.length <= 3) {
+                temp_array.push(0);        }
 
-            temp_array.reverse();
+                temp_array.reverse();
 
-        for (let i = 0; i < 4; i++) {
-            gameArr[i][0] = temp_array[i];
+            for (let i = 0; i < 4; i++) {
+                gameArr[i][a] = temp_array[i];
+            }
         }
     }
 
     
     function merge_down() {
-        for (let i = 3; i > 0; i--) {
-            if (gameArr[i][0] === gameArr[i-1][0]) {
-                gameArr[i][0] = gameArr[i][0] * 2;
-                gameArr[i-1][0] = 0; 
+        
+        for (let a = 0; a < 4; a++) {
+            for (let i = 3; i > 0; i--) {
+                if (gameArr[i][a] === gameArr[i-1][a]) {
+                    gameArr[i][a] = gameArr[i][a] * 2;
+                    gameArr[i-1][a] = 0; 
+                }
             }
         }
 
-        move_down();
     }
 
     function move_right() {
 
-        let temp_array: number[] = new Array();
+        for (let a = 0; a < 4; a++) {
 
-        for (let i = 0; i < 4; i++) {
-            if (gameArr[0][i] != 0) {
-                temp_array.push(gameArr[0][i]);
+            let temp_array: number[] = new Array();
+
+            for (let i = 0; i < 4; i++) {
+                if (gameArr[a][i] != 0) {
+                    temp_array.push(gameArr[a][i]);
+                }
             }
-        }
 
-        while (temp_array.length <= 3) {
-            temp_array.push(0);       
-        }
+            while (temp_array.length <= 3) {
+                temp_array.push(0);       
+            }
 
-        temp_array.reverse();
+            temp_array.reverse();
 
-        for (let i = 0; i < 4; i++) {
-            gameArr[0][i] = temp_array[i];
+            for (let i = 0; i < 4; i++) {
+                gameArr[a][i] = temp_array[i];
+            }
         }
     }
 
     
     function merge_right() {
-        for (let i = 3; i > 0; i--) {
-            if (gameArr[0][i] === gameArr[0][i-1]) {
-                gameArr[0][i] = gameArr[0][i] * 2;
-                gameArr[0][i-1] = 0; 
+        for (let a = 0; a < 4; a++) {
+            for (let i = 3; i > 0; i--) {
+                if (gameArr[a][i] === gameArr[a][i-1]) {
+                    gameArr[a][i] = gameArr[a][i] * 2;
+                    gameArr[a][i-1] = 0; 
+                }
             }
         }
 
-        move_right();
     }
 
     function move_left() {
 
-        let temp_array: number[] = new Array();
+        for (let a = 0; a < 4; a++) {
 
-        for (let i = 0; i < 4; i++) {
-            if (gameArr[0][i] != 0) {
-                temp_array.push(gameArr[0][i]);
+            let temp_array: number[] = new Array();
+
+            for (let i = 0; i < 4; i++) {
+                if (gameArr[a][i] != 0) {
+                    temp_array.push(gameArr[a][i]);
+                }
             }
-        }
 
         while (temp_array.length <= 3) {
-            temp_array.push(0);        }
+            temp_array.push(0);        
+        }
 
-        for (let i = 0; i < 4; i++) {
-            gameArr[0][i] = temp_array[i];
+            for (let i = 0; i < 4; i++) {
+                gameArr[a][i] = temp_array[i];
+            }
         }
     }
 
     function merge_left() {
-        for (let i = 0; i < 3; i++) {
-            if (gameArr[0][i] === gameArr[0][i+1]) {
-                gameArr[0][i] = gameArr[0][i] * 2;
-                gameArr[0][i+1] = 0; 
+        for (let a = 0; a < 4; a++) {
+            for (let i = 0; i < 3; i++) {
+                if (gameArr[a][i] === gameArr[a][i+1]) {
+                    gameArr[a][i] = gameArr[a][i] * 2;
+                    gameArr[a][i+1] = 0; 
+                }
             }
         }
 
-        move_left();
     }
 
     function keyLeft() {
@@ -222,24 +244,37 @@
 
         move_left();
         merge_left();
+        move_left();
+        check_loss();
+        randomFill();
+
     }
 
     function keyRight() {
         console.log("right");
         move_right();
         merge_right();
+        move_right();
+        check_loss();
+        randomFill();
     }
 
     function keyUp() {
         console.log("up");
         move_up();
         merge_up();
+        move_up();
+        check_loss();
+        randomFill();
     }
 
     function keyDown() {
         console.log("down");
         move_down();
         merge_down();
+        move_down();
+        check_loss();
+        randomFill();
     }
 
 </script>
@@ -250,10 +285,12 @@
 <div class="page">
     <div class="arrayContainer">
         <div class="array">
-            {#each gameArr as element, i (element)}
-                <div class="element">
-                    {element}
-                </div>
+            {#each Array(4) as ab, a}
+                {#each Array(4) as _, i}
+                    <div class="element">
+                        {gameArr[i][a]}
+                    </div>
+                {/each}
             {/each}
         </div>
     </div>
@@ -295,10 +332,12 @@
 }
 
 .arrayContainer {
-    display: grid;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: var(--box-color);
+    min-width: min-content;
     max-width: 470px;
     aspect-ratio: 1;
     padding: 15px;
@@ -307,18 +346,18 @@
 
 .array {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-area: 3px;
-    grid-auto-rows: 100px;
-    grid-auto-columns: 100px;
+    height: 470px;
+    width: 470px;
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-rows: 80px auto 80px; 
+    column-gap: 10px;
+    row-gap: 15px;
 }
 
 .element {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-area: 3px;
-    grid-auto-rows: 100px;
-    grid-auto-columns: 100px;
+    display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 </style>
