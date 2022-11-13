@@ -92,7 +92,4 @@ var settings = {
 <style>
     @import url(//fonts.googleapis.com/css?family=Oswald&subset=latin,latin-ext);
 
-body {
-  background-color: #000;
-}
 </style>

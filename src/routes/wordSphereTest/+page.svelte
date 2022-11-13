@@ -36,3 +36,9 @@
     </script>
 
 </html>
+
+<style>
+    * {
+        background: #1d1d1d;
+    }
+</style>
