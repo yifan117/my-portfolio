@@ -4,6 +4,7 @@
     export let padding = "4px"
     export let selected = false
     export let index = "1"
+
     </script>
     
     <div class="shimmer_border" style="border-radius: { border_radius }; padding: { padding }; z-index: { index }" class:selected>
@@ -20,6 +21,7 @@
     background linear-gradient(-45deg, #181818, #777777, #000000, #777777, #000000, #181818)
     animation gradient 10s ease infinite
     background-size 400% 400%
+    width 100%
 
 .selected
     background white

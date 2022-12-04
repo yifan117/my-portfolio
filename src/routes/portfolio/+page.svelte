@@ -1,7 +1,8 @@
 <script lang='ts'>
 
-    import BackToTop from "../lib/BackToTop.svelte";
+import BackToTop from "../lib/BackToTop.svelte";
 import Nav from "../lib/nav-bar.svelte";
+import Footer from "../Footer.svelte";
 
     let resources = [
     
@@ -100,11 +101,17 @@ function toggleBurger() {
             </div>
             {/each}
         </div>
-
+        
         <BackToTop/>
+        <div class="space"/>
+        <Footer/>
     </body>
     
     <style>
+
+    .space {
+        height: 20px;
+    }
 
     * {
         color: #D8D8E7;
@@ -123,7 +130,6 @@ function toggleBurger() {
             left: 0;
             min-height: 100vh;
             right: 0;
-            padding: 0px 0px 50px 0px;
         }
     
         .cards-container {

@@ -2,6 +2,7 @@
     
     import BackToTop from "./lib/BackToTop.svelte";
     import sticky from './sticky.js';
+    import Footer from "./Footer.svelte";
   
     import CubeAnimation from "./lib/cubeAnimation.svelte";
   
@@ -57,7 +58,6 @@
         class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
         use:sticky={{ stickToTop }}
         on:stuck={handleStuck}>
-  
 
     
     <div class="logo-wrapper">
@@ -166,6 +166,8 @@
     {#if stickToTop}
     <slot />
     {/if}
+
+    <Footer/>
   
   </body>
   

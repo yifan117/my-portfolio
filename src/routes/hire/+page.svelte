@@ -1,5 +1,6 @@
 <script lang="ts">
     import Nav from "../lib/nav-bar.svelte";
+    import Footer from "../Footer.svelte";
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
@@ -14,6 +15,8 @@
             <p>To contact me about offers or if you have any questions, please click <a href="../contact-me">here</a></p>
         </div>
     </div>
+
+    <Footer/>
         
 </body>
 

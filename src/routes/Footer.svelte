@@ -4,9 +4,10 @@ import Border from "./lib/Border.svelte";
 import Linkedin from "svelte-material-icons/Linkedin.svelte";
 import Resume from "svelte-material-icons/FileAccount.svelte";
 import Github from "svelte-material-icons/Github.svelte";
+
 </script>
 
-<Border padding="2px" border_radius="0px">
+<Border padding="2px 0px 0px 0px" border_radius="0px">
     <div class="container">
         <div class="top">
             <div class="logo">
@@ -33,7 +34,7 @@ import Github from "svelte-material-icons/Github.svelte";
                     <Linkedin color="#D8D8E7"/>
                 </div>
             </a>
-            <a class="icon_wrapper" href="https://www.github.com/yifan117" target="blank">
+            <a class="icon_wrapper" href="https://drive.google.com/file/d/1kdfccKUIHdXxzvFzR24ye90R7cVwHjKc/view?usp=sharing" target="blank">
                 <div class="text">
                     Resume/CV
                 </div>
@@ -63,6 +64,7 @@ import Github from "svelte-material-icons/Github.svelte";
     justify-content center
     gap 100px
     padding 8px
+    width 100%
 
 .bottom
     display flex
@@ -91,4 +93,7 @@ a
     text-decoration none
     list-style none
     color #D8D8E7
+
+.icon_wrapper
+    cursor pointer
 </style>

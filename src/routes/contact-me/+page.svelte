@@ -1,5 +1,6 @@
 <script lang="ts">
     import Nav from "../lib/nav-bar.svelte";
+    import Footer from "../Footer.svelte";
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
@@ -51,6 +52,8 @@
             </form>
         </div>
     </div>
+
+    <Footer/>
 </body>
 
 <style>
