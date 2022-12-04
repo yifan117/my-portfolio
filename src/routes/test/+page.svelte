@@ -177,13 +177,13 @@
 			<!-- <Sphere/> -->
         </section>
   
-        <!-- <section>
+        <section>
             <Saos
             animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>
                 <h2>Community Engagement</h2>
             </Saos>
-                <CommunitySphere/>
-        </section> -->
+                <Sphere/>
+        </section>
   
     {#if stickToTop}
     <slot />
