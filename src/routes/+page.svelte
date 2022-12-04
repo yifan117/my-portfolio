@@ -306,7 +306,6 @@ body {
     flex-direction: column;
     align-items: center;
     background: #1D1D1D;
-    margin-bottom: 1rem;
 }
 
 .logo {
