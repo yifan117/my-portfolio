@@ -289,7 +289,6 @@
 section {
     display: grid;
     align-self: stretch;
-    min-height: 100vh;
     width: 100%;
 }
 
@@ -308,6 +307,7 @@ body {
     flex-direction: column;
     align-items: center;
     background: #1D1D1D;
+    gap: 200px;
 }
 
 .logo {

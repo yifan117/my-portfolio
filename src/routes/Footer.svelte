@@ -95,5 +95,16 @@ a
     color #D8D8E7
 
 .icon_wrapper
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
     cursor pointer
+    width clamp(40px, 100px, 120px)
+    aspect-ratio 1
+    padding 2px
+    border-radius 4px
+
+    &:hover
+        background rgba(255, 255, 255, 0.1)
 </style>

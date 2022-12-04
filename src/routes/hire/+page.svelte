@@ -21,7 +21,7 @@
 </body>
 
 <style>
-        * {
+    * {
         color: #D8D8E7;
         font-family: 'Prompt';
         box-sizing: border-box;
@@ -30,12 +30,10 @@
 
     body {
         background: #1D1D1D;
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
         min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     h1 {
@@ -54,7 +52,7 @@
         align-self: stretch;
         align-items: center;
         justify-content: center;
-        height: 70%;
+        height: 60%;
     }
 
     a {
