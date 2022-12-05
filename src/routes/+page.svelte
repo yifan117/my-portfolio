@@ -109,7 +109,7 @@
         animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>
         <div class="hi-container">
                     <div class="hi" style="align-self: flex-end;">
-                        <div class="hi-text">Hi, I'm <span style="color: #2DA2E4">Yifan</span></div>
+                        <div class="hi-text">Hi, I'm <span class="gradient-text">Yifan</span></div>
   
                         <div class="occupation">
                             Full-Stack Developer | Student
@@ -124,7 +124,7 @@
             <section style="padding: 100px 0px 0px 0px">
                 <div class="about-me">
                     <div class="text">
-                        I’m a first year student at the <span style="color: #2DA2E4">University of Adelaide</span> studying a <span style="color: #2DA2E4">Bachelor of Computer Science (Advanced)</span> and am interested in both <span style="color: #2DA2E4">front-end and back-end</span> development opportunities to gain experience!
+                        I’m a first year student at the <span class="gradient-text">University of Adelaide</span> studying a <span class="gradient-text">Bachelor of Computer Science (Advanced)</span> and am interested in both <span class="gradient-text">front-end and back-end</span> development opportunities to gain experience!
                         <br><br>
                         I have experience in Svelte, Rust, HTML, CSS, JavaScript, TypeScript and C++.
                     </div>
@@ -258,6 +258,8 @@
                 transform: translate(0);
     }
 }
+
+
 
 * {
     color: #D8D8E7;
@@ -608,5 +610,26 @@ h2 {
     }
 
 }
-    
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+    }
+	50% {
+		background-position: 100% 50%;
+    }
+	100% {
+		background-position: 0% 50%;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(92.62deg, #9C98E2, #5F5FCC, #98D1F4, #00D3FF);
+    -webkit-background-clip: text;
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
   </style>
