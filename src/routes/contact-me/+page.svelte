@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     
 <body>
-
     <Nav/>
 
     <div class="container">
@@ -68,11 +67,11 @@
     body {
         display: flex;
         height: 100vh;
+        width: 100vw;
+        margin: 0px;
         flex-direction: column;
         align-items: center;
         background: #1D1D1D;
-        margin-bottom: 1rem;
-        align-self: stretch;
         justify-content: space-between;
     }
 
@@ -81,8 +80,6 @@
         align-items: center;
         justify-content: center;
         background: #1D1D1D;
-        align-self: stretch;
-        width: 100%;
         gap: 50px;
 }
 
