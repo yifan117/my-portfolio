@@ -27,20 +27,64 @@ let window_width = 0
 </script>
 <svelte:window on:mouseup={() => mousedown = false} on:mousemove={drag} on:mousedown={() => mousedown = true}/>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+
 <body>
     <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" style="left: {x + window_width}px;">
         <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1669150741320-465c5688f7f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
+            <img class="image" src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt='test' draggable='false'
             style="
             object-position: {((x + 1000) / 30) + 10}% center;"            />
             />
             <div class="info_wrapper">
-                <div class="text">
-                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                <div class="title">
+                    Stopwatch
                 </div>
 
-                <div class="redirect">
-                    Test
+                <div class="description">
+                    A simple stopwatch displaying minutes, seconds, and centiseconds.
+                </div>
+
+                <div class="redirect" on:click={() => location.href = '../lib/stopwatch'}>
+                    Visit
+                </div>
+            </div>
+        </div>
+
+        <div class="image_wrapper">
+            <img class="image" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt='test' draggable='false'
+            style="
+            object-position: {((x + 1000) / 30) + 10}% center;"            />
+            <div class="info_wrapper">
+                <div class="title">
+                    2048 Game
+                </div>
+
+                <div class="description">
+                    A 2048 game copy.<br/>To-Do: add end-game condition.
+                </div>
+
+                <div class="redirect" on:click={() => location.href = '../lib/2048'}>
+                    Visit
+                </div>
+            </div>
+        </div>
+
+        <div class="image_wrapper">
+            <img class="image" src="https://images.unsplash.com/photo-1595044426077-d36d9236d54a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt='test' draggable='false'
+            style="
+            object-position: {((x + 1000) / 30) + 10}% center;"            />
+            <div class="info_wrapper">
+                <div class="title">
+                    Typing Trainer
+                </div>
+
+                <div class="description">
+                    A simple game designed to help people learn to touch-type and improve typing speed
+                </div>
+
+                <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
+                    Visit
                 </div>
             </div>
         </div>
@@ -50,27 +94,16 @@ let window_width = 0
             style="
             object-position: {((x + 1000) / 30) + 10}% center;"            />
             <div class="info_wrapper">
-                <div class="text">
-                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                <div class="title">
+                    Typing Trainer
                 </div>
 
-                <div class="redirect">
-                    Test
-                </div>
-            </div>
-        </div>
-
-        <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
-            style="
-            object-position: {((x + 1000) / 30) + 10}% center;"            />
-            <div class="info_wrapper">
-                <div class="text">
-                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                <div class="description">
+                    A simple game designed to help people learn to touch-type and improve typing speed
                 </div>
 
-                <div class="redirect">
-                    Test
+                <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
+                    Visit
                 </div>
             </div>
         </div>
@@ -80,27 +113,16 @@ let window_width = 0
             style="
             object-position: {((x + 1000) / 30) + 10}% center;"            />
             <div class="info_wrapper">
-                <div class="text">
-                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                <div class="title">
+                    Typing Trainer
                 </div>
 
-                <div class="redirect">
-                    Test
-                </div>
-            </div>
-        </div>
-
-        <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
-            style="
-            object-position: {((x + 1000) / 30) + 10}% center;"            />
-            <div class="info_wrapper">
-                <div class="text">
-                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                <div class="description">
+                    A simple game designed to help people learn to touch-type and improve typing speed
                 </div>
 
-                <div class="redirect">
-                    Test
+                <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
+                    Visit
                 </div>
             </div>
         </div>
@@ -110,12 +132,16 @@ let window_width = 0
             style="
             object-position: {((x + 1000) / 30) + 10}% center;"            />
             <div class="info_wrapper">
-                <div class="text">
-                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                <div class="title">
+                    Typing Trainer
                 </div>
 
-                <div class="redirect">
-                    Test
+                <div class="description">
+                    A simple game designed to help people learn to touch-type and improve typing speed
+                </div>
+
+                <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
+                    Visit
                 </div>
             </div>
         </div>
@@ -126,14 +152,14 @@ let window_width = 0
 
 *
     user-select none
+    font-family 'Prompt'
 
 body
     height 100vh
     width 100vw
     background-color black
     margin 0rem
-    overflow-x scroll
-    overflow-y hidden
+    overflow-x hidden
 
 #image-track > .image_wrapper
     width 40vmin
@@ -189,6 +215,26 @@ body
 
 .image_wrapper:hover > .image
     cursor pointer
-    filter blur(5px)
+    filter blur(10px)
     transition 0.3s ease-in
+
+.title
+    font-weight 700
+    font-size 22px
+
+.info_wrapper
+    // background radial-gradient(circle, rgba(44,43,48,1) 8%, rgba(192,192,209,1) 53%, rgba(79,88,93,1) 84%, rgba(6,12,13,1) 96%)
+    // animation gradient 10s ease infinite
+    // background-size 200% 380%
+    // border-radius 16px
+    // padding 8px
+
+@keyframes gradient
+    0%
+        background-position 0% 50%
+    50%
+        background-position 100% 50%
+    100%
+        background-position 0% 50%
+
 </style>
