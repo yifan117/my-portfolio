@@ -2,6 +2,7 @@
 
     import Nav from "../lib/nav-bar.svelte";
     import Footer from "../Footer.svelte";
+    import Ticker from "../lib/TickerComponents/Ticker.svelte";
     
     let nav_contents = [
         {image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80", 

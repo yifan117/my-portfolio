@@ -14,7 +14,7 @@
   
     let headerContents = [
         { content: "Home"},
-        { content: "Portfolio", link: "./portfolio"},
+        { content: "Portfolio", link: "./portfolio_revised"},
         { content: "Hire", link: "./hire"},
         { content: "Contact", link: "./contact-me"}
     ];
