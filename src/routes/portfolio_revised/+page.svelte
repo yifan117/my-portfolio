@@ -79,7 +79,7 @@ let window_width = 0
 <div class="page">
     <Nav/>
 
-    <body>
+    <div class="wrapper">
         <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" style="left: {x + window_width}px;">
             {#each nav_contents as nav}
                 <div class="image_wrapper">
@@ -102,7 +102,7 @@ let window_width = 0
                 </div>
             {/each}
         </div>
-    </body>
+    </div>
 
     <Footer/>
 </div>
@@ -116,7 +116,7 @@ let window_width = 0
 a
     text-decoration none
 
-body
+.wrapper
     width 100vw
     background-color black
     margin 0rem
@@ -129,6 +129,8 @@ body
     height 100vh
     margin 0rem
     background #1d1d1d
+    overflow hidden
+
 
 #image-track > .image_wrapper
     width 40vmin
