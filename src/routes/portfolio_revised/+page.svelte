@@ -227,6 +227,9 @@ body
     align-items center
     justify-content center
     text-align center
+    &:hover
+        cursor pointer
+        background rgba(0, 0, 0, 0.5)
 
 .image_wrapper:hover > .image
     cursor pointer
