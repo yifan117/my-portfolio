@@ -136,7 +136,7 @@ let window_width = 0
             <div class="image_wrapper">
                 <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
                 style="
-                object-position: {((x + 1000) / 30) + 10}% center;"            />
+                object-position: {((x + 1000) / 30) + 10}% center;"   />
                 <div class="info_wrapper">
                     <div class="title">
                         Typing Trainer
@@ -217,6 +217,7 @@ body
 .info_wrapper:hover
     opacity 100
     display flex
+    
 
 .redirect
     background #1a1a1a
@@ -235,6 +236,9 @@ body
     cursor pointer
     filter blur(10px)
     transition 0.3s ease-in
+
+.image_wrapper:hover
+    box-shadow 0 0 13px 0px rgba(255, 255, 255, 0.1)
 
 .title
     font-weight 700
