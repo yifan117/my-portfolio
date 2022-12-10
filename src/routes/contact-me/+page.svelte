@@ -67,16 +67,13 @@
 
     body {
         display: flex;
-        position: absolute;
-        left: 0px;
-        right: 0px;
-        top: 0px;
-        bottom: 0px;
+        height: 100vh;
         flex-direction: column;
         align-items: center;
         background: #1D1D1D;
         margin-bottom: 1rem;
         align-self: stretch;
+        justify-content: space-between;
     }
 
     .container {
