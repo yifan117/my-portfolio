@@ -77,9 +77,9 @@ let window_width = 0
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
 
 <div class="page">
+    
     <Nav/>
-
-    <div class="wrapper">
+    <body>
         <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" style="left: {x + window_width}px;">
             {#each nav_contents as nav}
                 <div class="image_wrapper">
@@ -102,7 +102,7 @@ let window_width = 0
                 </div>
             {/each}
         </div>
-    </div>
+    </body>
 
     <Footer/>
 </div>
@@ -116,11 +116,11 @@ let window_width = 0
 a
     text-decoration none
 
-.wrapper
+body
     width 100vw
     background-color black
     margin 0rem
-    overflow hidden
+    overflow-x hidden
 
 .page
     display flex
@@ -129,7 +129,7 @@ a
     height 100vh
     margin 0rem
     background #1d1d1d
-    overflow hidden
+    overflow-x hidden
 
 
 #image-track > .image_wrapper
@@ -198,13 +198,6 @@ a
 .title
     font-weight 700
     font-size 22px
-
-.info_wrapper
-    // background radial-gradient(circle, rgba(44,43,48,1) 8%, rgba(192,192,209,1) 53%, rgba(79,88,93,1) 84%, rgba(6,12,13,1) 96%)
-    // animation gradient 10s ease infinite
-    // background-size 200% 380%
-    // border-radius 16px
-    // padding 8px
 
 @keyframes gradient
     0%
