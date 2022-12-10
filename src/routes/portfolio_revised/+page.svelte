@@ -95,7 +95,7 @@ let window_width = 0
                             { nav.description } <br/> { nav.to_do }
                         </div>
 
-                        <a class="redirect" href={ nav.href }}>
+                        <a class="redirect" href={ nav.href }>
                             Visit
                         </a>
                     </div>
@@ -120,19 +120,20 @@ body
     width 100vw
     background-color black
     margin 0rem
-    overflow-x hidden
+    overflow hidden
 
 .page
     display flex
     flex-direction column
     justify-content space-between
     height 100vh
+    margin 0rem
     background #1d1d1d
 
 #image-track > .image_wrapper
     width 40vmin
     height 56vmin
-    posiiton relative
+    position relative
     display flex
     align-items center
     justify-content center
