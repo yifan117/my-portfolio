@@ -80,6 +80,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        background: #1D1D1D;
         align-self: stretch;
         width: 100%;
         gap: 50px;
