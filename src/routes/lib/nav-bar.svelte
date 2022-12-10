@@ -1,7 +1,7 @@
 <script lang="ts">
         let headerContents = [
         { content: "Home", link: "../"},
-        { content: "Portfolio", link: "../portfolio"},
+        { content: "Portfolio", link: "../portfolio_revised"},
         { content: "Hire", link: "../hire"},
         { content: "Contact", link: "../contact-me"}
     ];
