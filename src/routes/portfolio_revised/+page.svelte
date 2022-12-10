@@ -1,4 +1,8 @@
 <script lang='ts'>
+
+import Nav from "../lib/nav-bar.svelte";
+import Footer from "../Footer.svelte";
+
 import { onMount } from "svelte";
 
 onMount(() => {
@@ -29,124 +33,129 @@ let window_width = 0
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
 
-<body>
-    <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" style="left: {x + window_width}px;">
-        <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt='test' draggable='false'
-            style="
-            object-position: {((x + 1000) / 30) + 10}% center;"            />
-            />
-            <div class="info_wrapper">
-                <div class="title">
-                    Stopwatch
-                </div>
+<div class="page">
+    <Nav/>
+    <body>
+        <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" style="left: {x + window_width}px;">
+            <div class="image_wrapper">
+                <img class="image" src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt='test' draggable='false'
+                style="
+                object-position: {((x + 1000) / 30) + 10}% center;"            />
+                />
+                <div class="info_wrapper">
+                    <div class="title">
+                        Stopwatch
+                    </div>
 
-                <div class="description">
-                    A simple stopwatch displaying minutes, seconds, and centiseconds.
-                </div>
+                    <div class="description">
+                        A simple stopwatch displaying minutes, seconds, and centiseconds.
+                    </div>
 
-                <div class="redirect" on:click={() => location.href = '../lib/stopwatch'}>
-                    Visit
+                    <div class="redirect" on:click={() => location.href = '../lib/stopwatch'}>
+                        Visit
+                    </div>
+                </div>
+            </div>
+
+            <div class="image_wrapper">
+                <img class="image" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt='test' draggable='false'
+                style="
+                object-position: {((x + 1000) / 30) + 10}% center;"            />
+                <div class="info_wrapper">
+                    <div class="title">
+                        2048 Game
+                    </div>
+
+                    <div class="description">
+                        A 2048 game copy.<br/>To-Do: add end-game condition.
+                    </div>
+
+                    <div class="redirect" on:click={() => location.href = '../lib/2048'}>
+                        Visit
+                    </div>
+                </div>
+            </div>
+
+            <div class="image_wrapper">
+                <img class="image" src="https://images.unsplash.com/photo-1595044426077-d36d9236d54a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt='test' draggable='false'
+                style="
+                object-position: {((x + 1000) / 30) + 10}% center;"            />
+                <div class="info_wrapper">
+                    <div class="title">
+                        Typing Trainer
+                    </div>
+
+                    <div class="description">
+                        A simple game designed to help people learn to touch-type and improve typing speed
+                    </div>
+
+                    <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
+                        Visit
+                    </div>
+                </div>
+            </div>
+
+            <div class="image_wrapper">
+                <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
+                style="
+                object-position: {((x + 1000) / 30) + 10}% center;"            />
+                <div class="info_wrapper">
+                    <div class="title">
+                        Typing Trainer
+                    </div>
+
+                    <div class="description">
+                        A simple game designed to help people learn to touch-type and improve typing speed
+                    </div>
+
+                    <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
+                        Visit
+                    </div>
+                </div>
+            </div>
+
+            <div class="image_wrapper">
+                <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
+                style="
+                object-position: {((x + 1000) / 30) + 10}% center;"            />
+                <div class="info_wrapper">
+                    <div class="title">
+                        Typing Trainer
+                    </div>
+
+                    <div class="description">
+                        A simple game designed to help people learn to touch-type and improve typing speed
+                    </div>
+
+                    <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
+                        Visit
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image_wrapper">
+                <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
+                style="
+                object-position: {((x + 1000) / 30) + 10}% center;"            />
+                <div class="info_wrapper">
+                    <div class="title">
+                        Typing Trainer
+                    </div>
+
+                    <div class="description">
+                        A simple game designed to help people learn to touch-type and improve typing speed
+                    </div>
+
+                    <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
+                        Visit
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt='test' draggable='false'
-            style="
-            object-position: {((x + 1000) / 30) + 10}% center;"            />
-            <div class="info_wrapper">
-                <div class="title">
-                    2048 Game
-                </div>
-
-                <div class="description">
-                    A 2048 game copy.<br/>To-Do: add end-game condition.
-                </div>
-
-                <div class="redirect" on:click={() => location.href = '../lib/2048'}>
-                    Visit
-                </div>
-            </div>
-        </div>
-
-        <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1595044426077-d36d9236d54a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt='test' draggable='false'
-            style="
-            object-position: {((x + 1000) / 30) + 10}% center;"            />
-            <div class="info_wrapper">
-                <div class="title">
-                    Typing Trainer
-                </div>
-
-                <div class="description">
-                    A simple game designed to help people learn to touch-type and improve typing speed
-                </div>
-
-                <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
-                    Visit
-                </div>
-            </div>
-        </div>
-
-        <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
-            style="
-            object-position: {((x + 1000) / 30) + 10}% center;"            />
-            <div class="info_wrapper">
-                <div class="title">
-                    Typing Trainer
-                </div>
-
-                <div class="description">
-                    A simple game designed to help people learn to touch-type and improve typing speed
-                </div>
-
-                <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
-                    Visit
-                </div>
-            </div>
-        </div>
-
-        <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
-            style="
-            object-position: {((x + 1000) / 30) + 10}% center;"            />
-            <div class="info_wrapper">
-                <div class="title">
-                    Typing Trainer
-                </div>
-
-                <div class="description">
-                    A simple game designed to help people learn to touch-type and improve typing speed
-                </div>
-
-                <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
-                    Visit
-                </div>
-            </div>
-        </div>
-        
-        <div class="image_wrapper">
-            <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
-            style="
-            object-position: {((x + 1000) / 30) + 10}% center;"            />
-            <div class="info_wrapper">
-                <div class="title">
-                    Typing Trainer
-                </div>
-
-                <div class="description">
-                    A simple game designed to help people learn to touch-type and improve typing speed
-                </div>
-
-                <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
-                    Visit
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+    </body>
+    <Footer/>
+</div>
 
 <style lang='stylus'>
 
@@ -155,11 +164,17 @@ let window_width = 0
     font-family 'Prompt'
 
 body
-    height 100vh
     width 100vw
     background-color black
     margin 0rem
     overflow-x hidden
+
+.page
+    display flex
+    flex-direction column
+    justify-content space-between
+    height 100vh
+    background #1d1d1d
 
 #image-track > .image_wrapper
     width 40vmin

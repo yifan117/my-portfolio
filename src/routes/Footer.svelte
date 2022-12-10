@@ -54,6 +54,7 @@ import Github from "svelte-material-icons/Github.svelte";
     font-weight 700
     align-items center
     justify-content center
+    color #D8D8E7
 
 .container
     z-index 2
