@@ -5,34 +5,51 @@
     import Ticker from "../lib/TickerComponents/Ticker.svelte";
     
     let nav_contents = [
+        {image: "https://images.unsplash.com/photo-1609697299491-69d2d5ed2c36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGNhbGN1bGF0b3J8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60", 
+        alt: "Calculator Tile", 
+        title: "Calculator", 
+        description: "A simple calculator. My first project completed in Svelte!",
+        status: "Status: Completed 31/08/2022",
+        to_do: "",
+        href: "../lib/calculator"},
+
         {image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80", 
         alt: "Stopwatch Tile", 
         title: "Stopwatch", 
-        description: "A simple stopwatch displaying minutes, seconds, and centiseconds.", 
+        description: "A simple stopwatch displaying minutes, seconds, and centiseconds.",
+        status: "Status: Completed 12/09/2022",
+        to_do: "",
         href: "../lib/stopwatch"},
-        
-        {image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", 
-        alt: "2048 Tile", 
-        title: "2048 Game", 
-        description: "A 2048 game copy.<br/>To-Do: add end-game condition.", 
-        href: "../lib/2048"},
-    
+
         {image: "https://images.unsplash.com/photo-1595044426077-d36d9236d54a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", 
         alt: "Typing Trainer Tile", 
         title: "Typing Trainer", 
-        description: "A game designed to help people learn to touch-type and improve typing speed.", 
+        description: "A game designed to help people learn to touch-type and improve typing speed.",
+        status: "Status: Completed 17/09/2022",
+        to_do: "",
         href: "../lib/typing_game"},
     
-        {image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80", 
-        alt: "Stopwatch tile", 
-        title: "Stopwatch", 
-        description: "A simple stopwatch displaying minutes, seconds, and centiseconds.", 
-        href: "../lib/stopwatch"},
+        {image: "https://svelte.dev/images/twitter-thumbnail.jpg", 
+        alt: "Svelte Materials Tile", 
+        title: "Svelte Materials", 
+        description: "A collection of resources that I utilised to learn Svelte and frontend.", 
+        status: "Status: Completed 17/09/2022",
+        to_do: "",
+        href: "../lib/svelte_materials"},
+
+        {image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", 
+        alt: "2048 Tile", 
+        title: "2048 Game", 
+        description: "A 2048 game copy.", 
+        status: "Status: In Progress",
+        to_do: "To-Do: add end-game condition.",
+        href: "../lib/2048"},
     
         {image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80", 
-        alt: "Stopwatch tile", 
-        title: "Stopwatch", 
-        description: "A simple stopwatch displaying minutes, seconds, and centiseconds.", 
+        alt: "Svelte Materials Tile", 
+        title: "Svelte Materials", 
+        description: "A collection of the materials I used to begin learning Svelte.", 
+        to_do: "",
         href: "../lib/stopwatch"},
     ]
     import { onMount } from "svelte";
@@ -47,172 +64,59 @@
     let x = 1500
     const max = 1500
     let min: number
+    let el: HTMLElement
+    let left: any;
     
     let mousedown = false
     function drag(event: any) {
+        console.log(left);
         if (mousedown) {
             x += event.movementX
             if (x < min) x = min
             if (x > max) x = max
+
         }
     }
-    
-    let el: HTMLElement
+
+    function update_left() {
+        left = el.scrollLeft;
+    }
     
     let window_width = 0
+
     </script>
-    <svelte:window on:mouseup={() => mousedown = false} on:mousemove={drag} on:mousedown={() => mousedown = true}/>
+    <svelte:window bind:scrollX={left} on:mousemove={drag} on:progress={update_left}/>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     
     <div class="page">
+        
         <Nav/>
-    
-        <!-- <body>
-            <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" style="left: {x + window_width}px;">
+        <body>
+            <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" on:scroll={update_left}>
                 {#each nav_contents as nav}
                     <div class="image_wrapper">
                         <img class="image" src={ nav.image } alt={ nav.alt } draggable='false'
                         style="
-                        object-position: {((x + 1000) / 30) + 10}% center;"            />
-                        />
+                        object-position: {left / 5}% center;"/>
                         <div class="info_wrapper">
                             <div class="title">
                                 { nav.title }
                             </div>
     
                             <div class="description">
-                                { nav.description }
+                                { nav.description } <br/> { nav.status } <br/> { nav.to_do }
                             </div>
     
-                            <div class="redirect" on:click={() => location.href = {nav.href}}>
+                            <a class="redirect" href={ nav.href } target="blank">
                                 Visit
-                            </div>
+                            </a>
                         </div>
                     </div>
                 {/each}
             </div>
-        </body> -->
-        
-    
-        <body>
-            <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" style="left: {x + window_width}px;">
-                <div class="image_wrapper">
-                    <img class="image" src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt='test' draggable='false'
-                    style="
-                    object-position: {((x + 1000) / 30) + 10}% center;"/>
-                    <div class="info_wrapper">
-                        <div class="title" style="color: #1A1A1A">
-                            Stopwatch
-                        </div>
-    
-                        <div class="description" style="color: #1A1A1A">
-                            A simple stopwatch displaying minutes, seconds, and centiseconds.
-                        </div>
-    
-                        <div class="redirect" on:click={() => location.href = '../lib/stopwatch'}>
-                            Visit
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="image_wrapper">
-                    <img class="image" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt='test' draggable='false'
-                    style="
-                    object-position: {((x + 1000) / 30) + 10}% center;"/>
-                    <div class="info_wrapper">
-                        <div class="title">
-                            2048 Game
-                        </div>
-    
-                        <div class="description">
-                            A 2048 game copy.<br/>To-Do: add end-game condition.
-                        </div>
-    
-                        <div class="redirect" on:click={() => location.href = '../lib/2048'}>
-                            Visit
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="image_wrapper">
-                    <img class="image" src="https://images.unsplash.com/photo-1595044426077-d36d9236d54a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt='test' draggable='false'
-                    style="
-                    object-position: {((x + 1000) / 30) + 10}% center;"            />
-                    <div class="info_wrapper">
-                        <div class="title" style="color: #1A1A1A">
-                            Typing Trainer
-                        </div>
-    
-                        <div class="description" style="color: #1A1A1A">
-                            A game designed to help people learn to touch-type and improve typing speed
-                        </div>
-    
-                        <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
-                            Visit
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="image_wrapper">
-                    <img class="image" src="https://images.unsplash.com/photo-1609697299491-69d2d5ed2c36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGNhbGN1bGF0b3J8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60" alt='test' draggable='false'
-                    style="
-                    object-position: {((x + 1000) / 30) + 10}% center;"            />
-                    <div class="info_wrapper">
-                        <div class="title">
-                            Calculator
-                        </div>
-    
-                        <div class="description">
-                            A simple calculator. My first project completed in Svelte!
-                        </div>
-    
-                        <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
-                            Visit
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="image_wrapper">
-                    <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
-                    style="
-                    object-position: {((x + 1000) / 30) + 10}% center;"            />
-                    <div class="info_wrapper">
-                        <div class="title">
-                            Typing Trainer
-                        </div>
-    
-                        <div class="description">
-                            A simple game designed to help people learn to touch-type and improve typing speed
-                        </div>
-    
-                        <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
-                            Visit
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="image_wrapper">
-                    <img class="image" src="https://images.unsplash.com/photo-1661098277720-9cf605e5fd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt='test' draggable='false'
-                    style="
-                    object-position: {((x + 1000) / 30) + 10}% center;"   />
-                    <div class="info_wrapper">
-                        <div class="title">
-                            Typing Trainer
-                        </div>
-    
-                        <div class="description">
-                            A simple game designed to help people learn to touch-type and improve typing speed
-                        </div>
-    
-                        <div class="redirect" on:click={() => location.href = '../lib/typing_game'}>
-                            Visit
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
         </body>
+    
         <Footer/>
     </div>
     
@@ -222,27 +126,35 @@
         user-select none
         font-family 'Prompt'
     
+    a
+        text-decoration none
+    
     body
         width 100vw
         background-color black
         margin 0rem
         overflow-x hidden
-    
+        display flex
+        align-items center
+        justify-content center
+
     .page
         display flex
         flex-direction column
         justify-content space-between
         height 100vh
+        margin 0rem
         background #1d1d1d
+        overflow-x hidden
+    
     
     #image-track > .image_wrapper
         width 40vmin
         height 56vmin
-        posiiton relative
+        position relative
         display flex
         align-items center
         justify-content center
-        overflow hidden
     
     .image_wrapper > .image
         width 40vmin
@@ -253,10 +165,14 @@
         display flex
         gap 4vmin
         position absolute
-        left 50%
         top 50%
-        transform translate(-100%, -50%)
-    
+        transform translate(0%, -50%)
+        overflow-x scroll
+        width 98%
+        scrollbar-width none
+        height 80%
+        align-items center
+
     .info_wrapper
         color white
         position absolute
@@ -292,8 +208,7 @@
             background rgba(0, 0, 0, 0.5)
     
     .image_wrapper:hover > .image
-        cursor pointer
-        filter blur(10px)
+        filter blur(10px) brightness(50%)
         transition 0.3s ease-in
     
     .image_wrapper:hover
@@ -302,13 +217,6 @@
     .title
         font-weight 700
         font-size 22px
-    
-    .info_wrapper
-        // background radial-gradient(circle, rgba(44,43,48,1) 8%, rgba(192,192,209,1) 53%, rgba(79,88,93,1) 84%, rgba(6,12,13,1) 96%)
-        // animation gradient 10s ease infinite
-        // background-size 200% 380%
-        // border-radius 16px
-        // padding 8px
     
     @keyframes gradient
         0%
