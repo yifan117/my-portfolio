@@ -45,12 +45,12 @@
         to_do: "To-Do: add end-game condition.",
         href: "../lib/2048"},
     
-        {image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80", 
-        alt: "Svelte Materials Tile", 
-        title: "Svelte Materials", 
-        description: "A collection of the materials I used to begin learning Svelte.", 
+        {image: "https://images.unsplash.com/photo-1670786146738-c9d7acdd7226?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80", 
+        alt: "Portfolio Tile", 
+        title: "More Projects Coming Soon!", 
+        description: "Under construction, watch this space. 👀", 
         to_do: "",
-        href: "../lib/stopwatch"},
+        href: "https://www.youtube.com/watch?v=eBGIQ7ZuuiU"},
     ]
     import { onMount } from "svelte";
     

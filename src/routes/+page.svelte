@@ -14,16 +14,16 @@
   
     let headerContents = [
         { content: "Home"},
-        { content: "Portfolio", link: "./portfolio_revised"},
+        { content: "Portfolio", link: "./portfolio_revised_as_marquee"},
         { content: "Hire", link: "./hire"},
         { content: "Contact", link: "./contact-me"}
     ];
   
     let skills = [
-        { text: "Svelte | HTML + CSS", level: "80", color: "#FF5D5D"},
-        { text: "JavaScript | TypeScript", level: "60", color: "#CC5CDE"},
+        { text: "Svelte | HTML + CSS", level: "90", color: "#FF5D5D"},
+        { text: "JavaScript | TypeScript", level: "90", color: "#CC5CDE"},
         { text: "C++", level: "80", color: "#80C07A"},
-        { text: "Rust", level: "20", color: "#D06E61"}
+        { text: "Rust", level: "70", color: "#D06E61"}
     ];
   
     let stickToTop = true;
