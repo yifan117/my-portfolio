@@ -209,7 +209,7 @@
     
     .image_wrapper:hover > .image
         filter blur(10px) brightness(50%)
-        transition 0.3s ease-in
+        transition 0.2s ease-in
     
     .image_wrapper:hover
         box-shadow 0 0 13px 0px rgba(255, 255, 255, 0.1)
