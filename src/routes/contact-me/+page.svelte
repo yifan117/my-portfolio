@@ -105,13 +105,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 70px;
+        padding: 80px;
         flex-direction: column;
         width: 40%;
         height: 70%;
         background: rgba(255, 255, 255, 0.15);
         border-radius: 16px;
-        gap: 10px;
+        gap: 8px;
     }
 
     .inputBox {
