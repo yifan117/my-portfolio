@@ -53,6 +53,7 @@
         href: "https://www.youtube.com/watch?v=eBGIQ7ZuuiU"},
     ]
     import { onMount } from "svelte";
+	import { element } from "svelte/internal";
     
     onMount(() => {
         window_width = window.innerWidth
@@ -82,10 +83,18 @@
         left = el.scrollLeft;
     }
     
-    let window_width = 0
+    let window_width = 0;
+
+    function scroll_horizontal(event) {
+        event.preventDefault();
+
+        el.scrollBy({
+            left: event.deltaY < 0 ? -30 : 30,
+        });
+    }
 
     </script>
-    <svelte:window bind:scrollX={left} on:mousemove={drag} on:progress={update_left}/>
+    <svelte:window bind:scrollX={left} on:mousemove={drag} on:progress={update_left} on:scroll={scroll_horizontal}/>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     

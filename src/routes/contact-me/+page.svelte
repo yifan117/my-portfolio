@@ -66,13 +66,13 @@
 
     body {
         display: flex;
-        height: 100vh;
         width: 100vw;
         margin: 0px;
+        height: 100vh;
         flex-direction: column;
         align-items: center;
         background: #1D1D1D;
-        justify-content: space-between;
+        overflow-x: hidden;
     }
 
     .container {
@@ -105,7 +105,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 150px;
+        padding: 70px;
         flex-direction: column;
         width: 40%;
         height: 70%;
