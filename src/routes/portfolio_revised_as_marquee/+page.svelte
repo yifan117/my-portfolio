@@ -107,7 +107,7 @@
                     <div class="image_wrapper">
                         <img class="image" src={ nav.image } alt={ nav.alt } draggable='false'
                         style="
-                        object-position: {left / 5}% center;"/>
+                        object-position: {left / 9}% center;"/>
                         <div class="info_wrapper">
                             <div class="title">
                                 { nav.title }
