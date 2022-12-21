@@ -106,6 +106,7 @@ class="header">
     .header .header-contents-active {
         display: flex;
         justify-content: flex-end;
+        background: #1d1d1d;
     }
   
     ul {
@@ -241,7 +242,6 @@ class="header">
 
     .header {
         flex-direction: column;
-        gap: 30px;
     }
 
     .header .logo-wrapper {
@@ -260,12 +260,10 @@ class="header">
 
     .header-contents-active {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        align-content: center;
         padding: none;
         width: 100%;
     }
+
     ul {
         align-items: center;
         justify-content: center;
@@ -275,15 +273,8 @@ class="header">
         z-index: 999;
     }
 
-        .toggle-button {
-            cursor: pointer;
-        }
-
-        
-    .header .header-contents-active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .toggle-button {
+        cursor: pointer;
     }
 
     .logo-wrapper {

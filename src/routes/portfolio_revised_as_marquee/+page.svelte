@@ -129,7 +129,7 @@
         <Footer/>
     </div>
     
-    <style lang='stylus'>
+<style lang='stylus'>
     
     *
         user-select none
@@ -235,4 +235,18 @@
         100%
             background-position 0% 50%
     
-    </style>
+
+@media (max-width 1000px)
+    #image-track
+        flex-direction column
+        width 100%
+        max-width 100vw
+
+    #image-track > .image_wrapper
+        width 80vmin
+        height 40vmin
+
+    .image_wrapper > .image
+        height 40vmin
+        width 80vmin
+</style>
