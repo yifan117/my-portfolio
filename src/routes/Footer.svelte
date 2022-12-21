@@ -48,7 +48,6 @@ import Github from "svelte-material-icons/Github.svelte";
     align-items center
     justify-content space-around
     padding 8px
-    width 100%
 
 .text
     text-align center
