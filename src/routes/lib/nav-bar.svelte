@@ -151,7 +151,7 @@ class="header">
         transition: all 0.3s;
         align-items: center;
         width: 100%;
-        padding: 10px 30px 10px 30px;
+        padding: 0px 30px;
         align-self: stretch;
         justify-content: space-between;
         z-index: 999;

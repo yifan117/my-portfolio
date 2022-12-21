@@ -140,7 +140,7 @@
     
     body
         width 100vw
-        background-color black
+        height 100%
         margin 0rem
         overflow-x hidden
         display flex
@@ -185,13 +185,12 @@
     .info_wrapper
         color white
         position absolute
-        max-width 30vmin
-        padding 4px
+        padding 8px
         display none
         opacity 0
         transition visibility 0s, opacity 0.2s linear
         text-align center
-        gap 20px
+        gap 1rem
         display flex
         align-items center
         justify-content center
@@ -225,7 +224,7 @@
     
     .title
         font-weight 700
-        font-size 22px
+        font-size 1.5rem
     
     @keyframes gradient
         0%
@@ -244,9 +243,9 @@
 
     #image-track > .image_wrapper
         width 80vmin
-        height 40vmin
+        height 44vmin
 
     .image_wrapper > .image
-        height 40vmin
+        height 44vmin
         width 80vmin
 </style>
