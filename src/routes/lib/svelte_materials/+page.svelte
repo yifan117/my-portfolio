@@ -101,4 +101,18 @@ let resources = [
     .card:hover p {
         opacity: 100;
     }
+
+    @media (max-width: 1000px) {
+        .card:hover .card-background {
+            transform: none;
+        }
+
+        .cards-container:hover>.card:not(:hover) .card-background {
+            filter: none;
+        }
+
+        .cards-container:hover>.card:not(:hover) p {
+            opacity: 100;
+        }
+    }
 </style>
