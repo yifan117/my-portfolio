@@ -45,6 +45,7 @@
 		"svelte-easyforms": "^1.0.5",
 		"svelte-inview": "^3.0.1",
 		"svelte-material-icons": "^2.0.4",
-		"svelte-pdf-simple": "^2.0.0"
+		"svelte-pdf-simple": "^2.0.0",
+		"svrollbar": "^0.12.0"
 	}
 }

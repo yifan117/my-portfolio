@@ -131,108 +131,126 @@
     
 <style lang='stylus'>
     
-    *
-        user-select none
-        font-family 'Prompt'
-    
-    a
-        text-decoration none
-    
-    body
-        width 100vw
-        height 100%
-        margin 0rem
-        overflow-x hidden
-        display flex
-        align-items center
-        justify-content center
+*
+    user-select none
+    font-family 'Prompt'
 
-    .page
-        display flex
-        flex-direction column
-        justify-content space-between
-        height 100vh
-        margin 0rem
-        background #1d1d1d
-        overflow-x hidden
-    
-    
-    #image-track > .image_wrapper
-        width 40vmin
-        height 56vmin
-        position relative
-        display flex
-        align-items center
-        justify-content center
-    
-    .image_wrapper > .image
-        width 40vmin
-        height 56vmin
-        object-fit none
-    
-    #image-track
-        display flex
-        gap 4vmin
-        position absolute
-        top 50%
-        transform translate(0%, -50%)
-        overflow-x scroll
-        width 98%
-        scrollbar-width none
-        height 80%
-        align-items center
+a
+    text-decoration none
 
-    .info_wrapper
-        color white
-        position absolute
-        padding 8px
-        display none
-        opacity 0
-        transition visibility 0s, opacity 0.2s linear
-        text-align center
-        gap 1rem
-        display flex
-        align-items center
-        justify-content center
-        flex-direction column
+body
+    width 100vw
+    height 100%
+    margin 0rem
+    overflow-x hidden
+    display flex
+    align-items center
+    justify-content center
+
+.page
+    display flex
+    flex-direction column
+    justify-content space-between
+    height 100vh
+    margin 0rem
+    background #1d1d1d
+    overflow-x hidden
+
+
+#image-track > .image_wrapper
+    width 40vmin
+    height 56vmin
+    position relative
+    display flex
+    align-items center
+    justify-content center
+
+.image_wrapper > .image
+    width 40vmin
+    height 56vmin
+    object-fit none
+
+#image-track
+    display flex
+    gap 4vmin
+    position absolute
+    top 50%
+    transform translate(0%, -50%)
+    overflow-x scroll
+    width 98%
+    scrollbar-width none
+    height 80%
+    align-items center
+
+.info_wrapper
+    color white
+    position absolute
+    padding 8px
+    display none
+    opacity 0
+    transition visibility 0s, opacity 0.2s linear
+    text-align center
+    gap 1rem
+    display flex
+    align-items center
+    justify-content center
+    flex-direction column
+
+.image:hover ~ .info_wrapper
+.info_wrapper:hover
+    opacity 100
+    display flex
     
-    .image:hover ~ .info_wrapper
-    .info_wrapper:hover
-        opacity 100
-        display flex
-        
-    
-    .redirect
-        background #1a1a1a
-        color white
-        padding 4px 12px
-        border-radius 16px
-        display flex
-        align-items center
-        justify-content center
-        text-align center
-        &:hover
-            cursor pointer
-            background rgba(0, 0, 0, 0.5)
-    
-    .image_wrapper:hover > .image
-        filter blur(10px) brightness(50%)
-        transition 0.2s ease-in
-    
-    .image_wrapper:hover
-        box-shadow 0 0 13px 0px rgba(255, 255, 255, 0.1)
-    
-    .title
-        font-weight 700
-        font-size 1.5rem
-    
-    @keyframes gradient
-        0%
-            background-position 0% 50%
-        50%
-            background-position 100% 50%
-        100%
-            background-position 0% 50%
+
+.redirect
+    background #1a1a1a
+    color white
+    padding 4px 12px
+    border-radius 16px
+    display flex
+    align-items center
+    justify-content center
+    text-align center
+    &:hover
+        cursor pointer
+        background rgba(0, 0, 0, 0.5)
+
+.image_wrapper:hover > .image
+    filter blur(10px) brightness(50%)
+    transition 0.2s ease-in
+
+.image_wrapper:hover
+    box-shadow 0 0 13px 0px rgba(255, 255, 255, 0.1)
+
+.title
+    font-weight 700
+    font-size 1.5rem
+
+/* width */
+::-webkit-scrollbar
+    height 6px
+
+/* Track */
+::-webkit-scrollbar-track
+    box-shadow inset 0 0 0.5px grey 
+    border-radius 10px
+
+/* Handle */
+::-webkit-scrollbar-thumb
+    background rgba(255, 255, 255, 0.15)
+    border-radius 10px
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+    background rgba(255, 255, 255, 0.05)
+
+@keyframes gradient
+    0%
+        background-position 0% 50%
+    50%
+        background-position 100% 50%
+    100%
+        background-position 0% 50%
     
 
 @media (max-width 1000px)
