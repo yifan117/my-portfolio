@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { CHROME_CRASHPAD_PIPE_NAME } from './../../../.svelte-kit/ambient.d.ts';
     import Nav from "../lib/nav-bar.svelte";
     import Footer from "../Footer.svelte";
 </script>

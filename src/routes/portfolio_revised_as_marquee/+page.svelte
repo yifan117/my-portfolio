@@ -11,7 +11,7 @@
         description: "A simple calculator. My first project completed in Svelte!",
         status: "Status: Completed 31/08/2022",
         to_do: "",
-        href: "../lib/calculator"},
+        href: "../lib/projects/calculator"},
 
         {image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80", 
         alt: "Stopwatch Tile", 
@@ -19,7 +19,7 @@
         description: "A simple stopwatch displaying minutes, seconds, and centiseconds.",
         status: "Status: Completed 12/09/2022",
         to_do: "",
-        href: "../lib/stopwatch"},
+        href: "../lib/projects/stopwatch"},
 
         {image: "https://images.unsplash.com/photo-1595044426077-d36d9236d54a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", 
         alt: "Typing Trainer Tile", 
@@ -27,7 +27,7 @@
         description: "A game designed to help people learn to touch-type and improve typing speed.",
         status: "Status: Completed 17/09/2022",
         to_do: "",
-        href: "../lib/typing_game"},
+        href: "../lib/projects/typing_game"},
     
         {image: "https://svelte.dev/images/twitter-thumbnail.jpg", 
         alt: "Svelte Materials Tile", 
@@ -35,7 +35,7 @@
         description: "A collection of resources that I utilised to learn Svelte and frontend.", 
         status: "Status: Completed 17/09/2022",
         to_do: "",
-        href: "../lib/svelte_materials"},
+        href: "../lib/projects/svelte_materials"},
 
         {image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", 
         alt: "2048 Tile", 
@@ -43,7 +43,7 @@
         description: "A 2048 game copy.", 
         status: "Status: In Progress",
         to_do: "To-Do: add end-game condition.",
-        href: "../lib/2048"},
+        href: "../lib/projects/2048"},
     
         {image: "https://images.unsplash.com/photo-1670786146738-c9d7acdd7226?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80", 
         alt: "Portfolio Tile", 
