@@ -68,6 +68,7 @@ body
     width 100vw
     margin 0px
     height 100vh
+    justify-content space-between
     flex-direction column
     align-items center
     background #1D1D1D
@@ -101,7 +102,8 @@ span
     align-items center
     padding 80px
     flex-direction column
-    width 40%
+    width 100%
+    max-width 80%
     height 70%
     background rgba(255, 255, 255, 0.15)
     border-radius 16px
