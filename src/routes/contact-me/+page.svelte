@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { CHROME_CRASHPAD_PIPE_NAME } from './../../../.svelte-kit/ambient.d.ts';
     import Nav from "../lib/nav-bar.svelte";
     import Footer from "../Footer.svelte";
 </script>
@@ -103,8 +104,9 @@ span
     padding 80px
     flex-direction column
     width 100%
+    height 100%
     max-width 80%
-    height 70%
+    max-height 80%
     background rgba(255, 255, 255, 0.15)
     border-radius 16px
     gap 8px
@@ -180,5 +182,8 @@ input[type=submit]:hover
 
     .container
         flex-direction column
+
+    .card
+        max-height 40%
 
 </style>
