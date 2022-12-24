@@ -235,7 +235,7 @@ body
         background-position 0% 50%
     
 
-@media (max-width 1000px)
+@media (max-width 745px)
     #image-track
         flex-direction column
         width 100%
