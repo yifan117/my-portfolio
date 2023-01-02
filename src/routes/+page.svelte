@@ -126,7 +126,7 @@
                     <div class="text">
                         I’m a first year student at the <span class="gradient-text">University of Adelaide</span> studying a <span class="gradient-text">Bachelor of Computer Science (Advanced)</span> and am interested in both <span class="gradient-text">front-end and back-end</span> development opportunities to gain experience!
                         <br><br>
-                        I have experience in Svelte, Rust, HTML, CSS, JavaScript, TypeScript and C++.
+                        I have experience in Svelte, Rust, Python, HTML, CSS, JavaScript, TypeScript and C++.
                     </div>
             </div>
         </section>
@@ -412,18 +412,19 @@ ul {
         letter-spacing: 2px;
         text-transform: uppercase;
         color: transparent;
-        -webkit-text-stroke: 0.1px rgba(216, 216, 231, 0.8);
+        -webkit-text-stroke: 1px rgba(216, 216, 231, 0.8);
     }
 
     ul li a::before {
         content: attr(data-text);
         position: absolute;
         color: #D8D8E7;
+        line-height: 1em;
         width: 0;
         overflow: hidden;
         transition: 0.5s;
         border-right: 0px solid var(--clr);
-        -webkit-text-stroke: 0.1px var(--clr);
+        -webkit-text-stroke: 1px var(--clr);
     }
 
     ul li a:hover::before {

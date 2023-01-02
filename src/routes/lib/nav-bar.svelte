@@ -126,7 +126,7 @@ class="header">
           letter-spacing: 2px;
           text-transform: uppercase;
           color: transparent;
-          -webkit-text-stroke: 0.1px rgba(216, 216, 231, 0.8);
+          -webkit-text-stroke: 1px rgba(216, 216, 231, 0.8);
       }
   
       ul li a::before {
@@ -137,7 +137,7 @@ class="header">
           overflow: hidden;
           transition: 0.5s;
           border-right: 0px solid var(--clr);
-          -webkit-text-stroke: 0.1px var(--clr);
+          -webkit-text-stroke: 1px var(--clr);
       }
   
       ul li a:hover::before {
