@@ -27,7 +27,7 @@ import Github from "svelte-material-icons/Github.svelte";
                 <Linkedin color="#D8D8E7"/>
             </div>
         </a>
-        <a class="icon_wrapper" href="https://drive.google.com/file/d/1pMttR6bV6nbDBZQItIRjaJXT9G8_vBJF/view?usp=sharing" target="blank">
+        <a class="icon_wrapper" href="https://drive.google.com/file/d/1F7xsMwDZVOYG_cfbnD6d2nSSlaAw6j3z/view?usp=sharing" target="blank">
             <div class="text">
                 Resume
             </div>
