@@ -178,7 +178,7 @@ body
     transform translate(0%, -50%)
     overflow-x scroll
     width 98%
-    scrollbar-width none
+    scrollbar-width auto
     height 80%
     align-items center
 
