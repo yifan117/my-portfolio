@@ -150,7 +150,6 @@ body
 .page
     display flex
     flex-direction column
-    justify-content space-between
     height 100vh
     margin 0rem
     background #1d1d1d
@@ -173,13 +172,12 @@ body
 #image-track
     display flex
     gap 4vmin
-    position absolute
-    top 50%
     transform translate(0%, -50%)
     overflow-x scroll
+    position absolute
+    top 50%
     width 98%
     scrollbar-width auto
-    height 80%
     align-items center
 
 .info_wrapper
