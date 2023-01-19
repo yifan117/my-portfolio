@@ -22,7 +22,7 @@
     let skills = [
         { text: "Svelte | HTML + CSS", level: "90", color: "#FF5D5D"},
         { text: "JavaScript | TypeScript", level: "90", color: "#CC5CDE"},
-        { text: "C++", level: "80", color: "#80C07A"},
+        { text: "C++", level: "95", color: "#80C07A"},
         { text: "Rust", level: "70", color: "#D06E61"}
     ];
   
