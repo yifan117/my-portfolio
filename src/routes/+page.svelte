@@ -124,7 +124,7 @@
             <section style="padding: 100px 0px 0px 0px">
                 <div class="about-me">
                     <div class="text">
-                        I’m a first year student at the <span class="gradient-text">University of Adelaide</span> studying a <span class="gradient-text">Bachelor of Computer Science (Advanced)</span> and am interested in both <span class="gradient-text">front-end and back-end</span> development opportunities to gain experience!
+                        I’m a second year student at the <span class="gradient-text">University of Adelaide</span> studying a <span class="gradient-text">Bachelor of Computer Science</span> and am interested in both <span class="gradient-text">front-end and back-end</span> development opportunities to gain experience!
                         <br><br>
                         I have experience in Svelte, Rust, Python, HTML, CSS, JavaScript, TypeScript and C++.
                     </div>
