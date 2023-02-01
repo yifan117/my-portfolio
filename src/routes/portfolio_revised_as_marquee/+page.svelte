@@ -155,7 +155,6 @@ body
     background #1d1d1d
     overflow-x hidden
 
-
 #image-track > .image_wrapper
     width 40vmin
     height 56vmin
@@ -172,6 +171,7 @@ body
 #image-track
     display flex
     gap 4vmin
+    height 70%
     transform translate(0%, -50%)
     overflow-x scroll
     position absolute
