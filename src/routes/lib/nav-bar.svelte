@@ -82,25 +82,25 @@ class="header">
         font-weight: 700;
         align-items: flex-start;
     }
-  
+
     .header-contents {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
     }
-  
+
     .header ul {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      justify-content: flex-end;
-      gap: 100px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 100px;
     }
 
     .header .header-contents {
-      display: flex;
-      justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
     }
 
     .header .header-contents-active {
@@ -108,7 +108,7 @@ class="header">
         justify-content: flex-end;
         background: #1d1d1d;
     }
-  
+
     ul {
         display: flex;
         order: 1;
@@ -118,33 +118,33 @@ class="header">
         align-items: flex-end;
         justify-content: flex-start;
     }
-  
-      ul li a {
-          position: relative;
-          text-decoration: none;
-          line-height: 1em;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          color: transparent;
-          -webkit-text-stroke: 1px rgba(216, 216, 231, 0.8);
-      }
-  
-      ul li a::before {
-          content: attr(data-text);
-          position: absolute;
-          color: #D8D8E7;
-          width: 0;
-          overflow: hidden;
-          transition: 0.5s;
-          border-right: 0px solid var(--clr);
-          -webkit-text-stroke: 1px var(--clr);
-      }
-  
-      ul li a:hover::before {
-          width: 100%;
-          filter: drop-shadow(0 0 25px var(--clr));
-      }
-  
+
+    ul li a {
+        position: relative;
+        text-decoration: none;
+        line-height: 1em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(216, 216, 231, 0.8);
+    }
+
+    ul li a::before {
+        content: attr(data-text);
+        position: absolute;
+        color: #D8D8E7;
+        width: 0;
+        overflow: hidden;
+        transition: 0.5s;
+        border-right: 0px solid var(--clr);
+        -webkit-text-stroke: 1px var(--clr);
+    }
+
+    ul li a:hover::before {
+        width: 100%;
+        filter: drop-shadow(0 0 25px var(--clr));
+    }
+
     .header {
         top: 0rem;
         display: flex;

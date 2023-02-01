@@ -99,8 +99,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
     
     <div class="page">
-        
         <Nav/>
+        
         <body>
             <div bind:this={el} id="image-track" data-mouse-down-at="0" data-prev-percentage="0" on:scroll={update_left}>
                 {#each nav_contents as nav}
