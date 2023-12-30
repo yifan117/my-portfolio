@@ -11,7 +11,7 @@
     <div class="wrapper">
         <div class="text-container">
             <h1>What Am I Looking For?</h1>
-            <p>I'm looking for opportunities as either a full-stack, front-end, or back-end software engineer. Since I am only in my first year of my Computer Science degree, I'm primarily focusing on internships and part-time jobs, but would love the opportunity for permanent offers once I graduate!</p>
+            <p>I'm looking for opportunities as either a full-stack, front-end, or back-end graduate software engineer and internships.</p>
             <p>To contact me about offers or if you have any questions, please click <a href="../contact-me">here</a></p>
         </div>
     </div>

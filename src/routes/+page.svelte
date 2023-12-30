@@ -3,33 +3,34 @@
     import BackToTop from "./lib/BackToTop.svelte";
     import sticky from './sticky.js';
     import Footer from "./Footer.svelte";
-  
+
     import CubeAnimation from "./lib/cubeAnimation.svelte";
-  
+
     import Saos from "saos";
 
     function handleObserver(x: CustomEvent<any>) {
     console.info(x.detail.observing);
-  }
-  
+    }
+
     let headerContents = [
         { content: "Home"},
         { content: "Portfolio", link: "./portfolio_revised_as_marquee"},
         { content: "Hire", link: "./hire"},
         { content: "Contact", link: "./contact-me"}
     ];
-  
+
     let skills = [
-        { text: "Svelte | HTML + CSS", level: "90", color: "#FF5D5D"},
+        { text: "Svelte", level: "90", color: "#FF5D5D"},
+        { text: "React", level: "90", color: "#33658A"},
+        { text: "Java | Springboot", level: "70", color: "#86BBD8"},
         { text: "JavaScript | TypeScript", level: "90", color: "#CC5CDE"},
         { text: "C++", level: "95", color: "#80C07A"},
         { text: "Rust", level: "70", color: "#D06E61"}
     ];
-  
+
     let stickToTop = true;
-  
     let isStuck = false;
-  
+
     function handleStuck(e) {
         isStuck = e.detail.isStuck;
     }
@@ -42,17 +43,17 @@
         toggleCount += 1;
     }
 
-  </script>
-  
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
-  
-  <body>
-  
+</script>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+
+<body>
+
     {#if !stickToTop}
     <slot />
     {/if}
-  
+
         <div 
         class="header" 
         class:isStuck data-position={stickToTop ? 'top' : 'bottom'}
@@ -102,31 +103,31 @@
             {/if}
         </div>
         <BackToTop/>
-  
+
         <section></section>
-  
+
         <Saos
         animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>
         <div class="hi-container">
                     <div class="hi" style="align-self: flex-end;">
                         <div class="hi-text">Hi, I'm <span class="gradient-text">Yifan</span></div>
-  
+
                         <div class="occupation">
                             Full-Stack Developer | Student
                         </div>
                     </div>
                 </div>
-  
+
                 <CubeAnimation/>
         </Saos>
-  
+
         <Saos animation={'focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both'}>           
             <section style="padding: 100px 0px 0px 0px">
                 <div class="about-me">
                     <div class="text">
-                        I’m a second year student at the <span class="gradient-text">University of Adelaide</span> studying a <span class="gradient-text">Bachelor of Computer Science</span> and am interested in both <span class="gradient-text">front-end and back-end</span> development opportunities to gain experience!
+                        I’m a third year student at the <span class="gradient-text">University of Adelaide</span> studying a <span class="gradient-text">Bachelors of Computer Science</span> and am interested in both <span class="gradient-text">front-end and back-end</span> development opportunities to gain experience!
                         <br><br>
-                        I have experience in Svelte, Rust, Python, HTML, CSS, JavaScript, TypeScript and C++.
+                        I have experience in Svelte, React, Rust, Java (Springboot), HTML, CSS, JavaScript, TypeScript and C++.
                     </div>
             </div>
         </section>
@@ -162,17 +163,17 @@
             </Saos>
                 <CommunitySphere/>
         </section> -->
-  
+
     {#if stickToTop}
     <slot />
     {/if}
 
     <Footer/>
-  
-  </body>
-  
-  <style lang='stylus'>
-  
+
+</body>
+
+<style lang='stylus'>
+
 @keyframes -global-fade-in-left {
     0% {
         -webkit-transform: translateX(-50px);
@@ -633,4 +634,4 @@ h2 {
     background-clip: text;
     text-fill-color: transparent;
 }
-  </style>
+</style>
