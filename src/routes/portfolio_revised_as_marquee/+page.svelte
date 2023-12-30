@@ -48,7 +48,8 @@
         {image: "https://images.unsplash.com/photo-1670786146738-c9d7acdd7226?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80", 
         alt: "Portfolio Tile", 
         title: "More Projects Coming Soon!", 
-        description: "Under construction, watch this space. 👀", 
+        description: "Under construction, watch this space. 👀",
+        status: "",
         to_do: "",
         href: "https://www.youtube.com/watch?v=eBGIQ7ZuuiU"},
     ]
